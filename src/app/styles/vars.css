@@ -1,0 +1,10 @@
+:root {
+  --color-bg: #F9FAFB;
+  --color-primary: #2563EB;
+  --color-primary-active: #1E40AF;
+  --color-primary-focus: rgba(37, 99, 235, 0.25);
+  --color-primary-hover: #1D4ED8;
+  --color-text: #111827;
+  --color-text-disabled: #9CA3AF;
+  --color-text-secondary: #6B7280;
+}

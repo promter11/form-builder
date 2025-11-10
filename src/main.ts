@@ -1,4 +1,6 @@
+import "@/app/styles/index.css";
+
 import { createApp } from "vue";
-import App from "./app.vue";
+import { App } from "@/app";
 
 createApp(App).mount("#app");
