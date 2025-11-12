@@ -51,8 +51,43 @@
       }
     ],
     "import/prefer-default-export": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "singleAttributePerLine": true
+      }
+    ],
+    "vue/attributes-order": [
+      "error",
+      {
+        "order": [
+          "DEFINITION",
+          "CONDITIONALS",
+          "LIST_RENDERING",
+          "RENDER_MODIFIERS",
+          "GLOBAL",
+          ["UNIQUE", "SLOT"],
+          "TWO_WAY_BINDING",
+          "OTHER_DIRECTIVES",
+          "OTHER_ATTR",
+          "EVENTS",
+          "CONTENT"
+        ],
+        "alphabetical": true
+      }
+    ],
+    "vue/block-lang": [
+      "error",
+      {
+        "script": {
+          "lang": "ts"
+        }
+      }
+    ],
+    "vue/component-api-style": ["error", ["script-setup", "composition"]],
     "vue/component-tags-order": [
-      "error", {
+      "error",
+      {
         "order": [
           "script",
           "template",

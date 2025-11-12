@@ -1,0 +1,7 @@
+@define-mixin text-strong {
+  font-family: var(--text-strong-font-family);
+  font-size: var(--text-strong-font-size);
+  font-weight: var(--text-strong-font-weight);
+  letter-spacing: var(--text-strong-letter-spacing);
+  line-height: var(--text-strong-line-height);
+}

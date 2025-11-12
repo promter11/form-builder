@@ -1,3 +1,5 @@
+@import "./fonts.css";
+@import "./mixins.css";
 @import "./normalize.css";
 @import "./overrides.css";
 @import "./vars.css";
