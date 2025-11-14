@@ -2,4 +2,5 @@
 @import "./mixins.css";
 @import "./normalize.css";
 @import "./overrides.css";
+@import "./transitions.css";
 @import "./vars.css";

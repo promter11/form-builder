@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { useId } from "vue";
 
 type Emits = {
   input: [value: string];
@@ -18,7 +18,7 @@ withDefaults(defineProps<Props>(), {
   isDisabled: false,
 });
 
-const id = computed(() => Math.random().toString(36).substring(7));
+const id = useId();
 
 const onInput = (event: InputEvent) => emit("input", (event.target as HTMLInputElement).value);
 </script>
@@ -57,11 +57,14 @@ const onInput = (event: InputEvent) => emit("input", (event.target as HTMLInputE
 
 .label {
   width: fit-content;
+  user-select: none;
 
   @add-mixin text-regular;
 }
 
 .wrapper {
+  display: grid;
+  height: 40px;
   border: 1px solid var(--color-border);
   border-radius: 8px;
   transition: outline-color var(--transition-time);
@@ -75,7 +78,6 @@ const onInput = (event: InputEvent) => emit("input", (event.target as HTMLInputE
 
 .input {
   width: 100%;
-  min-height: 40px;
   padding: 6px 12px;
   border-radius: inherit;
   transition: background-color var(--transition-time);
