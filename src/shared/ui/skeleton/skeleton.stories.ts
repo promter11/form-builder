@@ -5,7 +5,7 @@ import { Skeleton } from "./";
 
 const meta = {
   component: Skeleton,
-  tag: ["autodocs"],
+  tags: ["autodocs"],
   render: (args) => ({
     components: {
       Skeleton,

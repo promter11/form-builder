@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
-import { Icon } from "./";
+import { Input } from "./";
 
 const meta = {
-  component: Icon,
+  component: Input,
   tags: ["autodocs"],
-  title: "Components/Icon",
-} satisfies Meta<typeof Icon>;
+  title: "Components/Input",
+} satisfies Meta<typeof Input>;
 
 export default meta;
 
@@ -14,6 +14,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {
   args: {
-    name: "pencil",
+    label: "Label",
+    placeholder: "Placeholder",
+    value: "",
   },
 };

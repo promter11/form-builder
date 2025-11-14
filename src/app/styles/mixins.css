@@ -1,3 +1,11 @@
+@define-mixin text-regular {
+  font-family: var(--text-regular-font-family);
+  font-size: var(--text-regular-font-size);
+  font-weight: var(--text-regular-font-weight);
+  letter-spacing: var(--text-regular-letter-spacing);
+  line-height: var(--text-regular-line-height);
+}
+
 @define-mixin text-strong {
   font-family: var(--text-strong-font-family);
   font-size: var(--text-strong-font-size);
