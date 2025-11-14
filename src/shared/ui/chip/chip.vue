@@ -1,17 +1,11 @@
 <script setup lang="ts">
-import { Icon, Typography } from "@/shared/ui";
+import { Icon, Typography } from "../";
 
-type Emits = {
-  close: [];
-};
+import type { ChipEmits, ChipProps } from "./types";
 
-type Props = {
-  isClosable?: boolean;
-};
+const emit = defineEmits<ChipEmits>();
 
-const emit = defineEmits<Emits>();
-
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<ChipProps>(), {
   isClosable: false,
 });
 

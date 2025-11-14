@@ -1,9 +1,7 @@
 <script setup lang="ts">
-type Props = {
-  isLoading?: boolean;
-};
+import type { SkeletonProps } from "./types";
 
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<SkeletonProps>(), {
   isLoading: false,
 });
 </script>

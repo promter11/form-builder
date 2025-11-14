@@ -1,17 +1,11 @@
 <script setup lang="ts">
 import { defineAsyncComponent, defineComponent, h } from "vue";
 
-import { Skeleton } from "@/shared/ui";
+import { Skeleton } from "../";
 
-import type { IconSize } from "./types";
+import type { IconProps } from "./types";
 
-type Props = {
-  isSpaced?: boolean;
-  size?: IconSize;
-  name: string;
-};
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<IconProps>(), {
   isSpaced: true,
   size: "m",
 });

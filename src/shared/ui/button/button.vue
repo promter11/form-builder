@@ -1,17 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import { Typography } from "@/shared/ui";
+import { Typography } from "../";
 
-import type { ButtonColor, ButtonVariant } from "./types";
+import type { ButtonProps } from "./types";
 
-type Props = {
-  color?: ButtonColor;
-  isDisabled?: boolean;
-  variant?: ButtonVariant;
-};
-
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<ButtonProps>(), {
   color: "primary",
   isDisabled: false,
   variant: "solid",

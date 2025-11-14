@@ -1,28 +1,23 @@
 <script setup lang="ts">
 import { useId } from "vue";
 
-import { Typography } from "@/shared/ui";
+import { Typography } from "../";
 
-type Emits = {
-  input: [value: string];
-};
+import type { InputEmits, InputProps } from "./types";
 
-type Props = {
-  isDisabled?: boolean;
-  label?: string;
-  placeholder?: string;
-  value: string;
-};
+const emit = defineEmits<InputEmits>();
 
-const emit = defineEmits<Emits>();
-
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<InputProps>(), {
   isDisabled: false,
 });
 
 const id = useId();
 
-const onInput = (event: InputEvent) => emit("input", (event.target as HTMLInputElement).value);
+const onInput = (event: Event) => {
+  if (event.target instanceof HTMLInputElement) {
+    emit("input", event.target.value);
+  }
+};
 </script>
 
 <template>

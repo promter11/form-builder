@@ -1,24 +1,13 @@
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
 
-import { Icon, Typography } from "@/shared/ui";
+import { Icon, Typography } from "../";
 
-import type { SelectItem } from "./types";
+import type { SelectEmits, SelectProps } from "./types";
 
-type Emits = {
-  change: [value: string];
-};
+const emit = defineEmits<SelectEmits>();
 
-type Props = {
-  items: SelectItem[];
-  label?: string;
-  placeholder?: string;
-  value: string;
-};
-
-const emit = defineEmits<Emits>();
-
-const props = defineProps<Props>();
+const props = defineProps<SelectProps>();
 
 const id = useId();
 

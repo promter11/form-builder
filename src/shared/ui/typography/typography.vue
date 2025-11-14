@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import type { TypographyTag, TypographyVariant } from "./types";
+import type { TypographyProps, TypographyTag, TypographyVariant } from "./types";
 
-type Props = {
-  variant?: TypographyVariant;
-};
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<TypographyProps>(), {
   variant: "body",
 });
 
