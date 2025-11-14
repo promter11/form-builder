@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useId } from "vue";
 
+import { Typography } from "@/shared/ui";
+
 type Emits = {
   input: [value: string];
 };
@@ -30,9 +32,9 @@ const onInput = (event: InputEvent) => emit("input", (event.target as HTMLInputE
       :class="$style.label"
       :for="id"
     >
-      {{ label }}
+      <Typography>{{ label }}</Typography>
     </label>
-    <span
+    <Typography
       :class="$style.wrapper"
       tabindex="0"
     >
@@ -44,7 +46,7 @@ const onInput = (event: InputEvent) => emit("input", (event.target as HTMLInputE
         :value="value"
         @input="onInput"
       />
-    </span>
+    </Typography>
   </div>
 </template>
 
@@ -58,8 +60,6 @@ const onInput = (event: InputEvent) => emit("input", (event.target as HTMLInputE
 .label {
   width: fit-content;
   user-select: none;
-
-  @add-mixin text-regular;
 }
 
 .wrapper {
@@ -82,8 +82,6 @@ const onInput = (event: InputEvent) => emit("input", (event.target as HTMLInputE
   border-radius: inherit;
   transition: background-color var(--transition-time);
   outline: none;
-
-  @add-mixin text-regular;
 
   &:disabled {
     opacity: var(--opacity-item-disabled);

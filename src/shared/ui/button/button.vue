@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Typography } from "@/shared/ui";
+
 import type { ButtonColor, ButtonVariant } from "./types";
 
 type Props = {
@@ -20,7 +22,9 @@ withDefaults(defineProps<Props>(), {
     :disabled="isDisabled"
     type="button"
   >
-    <slot />
+    <Typography variant="subtitle">
+      <slot />
+    </Typography>
   </button>
 </template>
 
@@ -39,8 +43,6 @@ withDefaults(defineProps<Props>(), {
   -webkit-tap-highlight-color: transparent;
   background: var(--background);
   color: var(--color);
-
-  @add-mixin text-strong;
 
   &:active:not(:disabled) {
     transform: scale(var(--opacity-item-active));

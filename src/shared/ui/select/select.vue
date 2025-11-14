@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
 
-import { Icon } from "@/shared/ui";
+import { Icon, Typography } from "@/shared/ui";
 
 import type { SelectItem } from "./types";
 
@@ -48,7 +48,7 @@ const handleClickOutside = () => changeExpanded(false);
       :for="id"
       @click.stop
     >
-      {{ label }}
+      <Typography>{{ label }}</Typography>
     </label>
     <button
       :id="id"
@@ -57,7 +57,7 @@ const handleClickOutside = () => changeExpanded(false);
       type="button"
       @click="changeExpanded(!isExpanded)"
     >
-      <span :class="$style.text">{{ currentItem?.text ?? placeholder }}</span>
+      <Typography :class="$style.text">{{ currentItem?.text ?? placeholder }}</Typography>
       <Icon
         :class="[$style.chevron, isExpanded && $style.reversed]"
         name="chevron-down"
@@ -76,7 +76,7 @@ const handleClickOutside = () => changeExpanded(false);
           type="button"
           @click="handleChange(item.value)"
         >
-          <span :class="$style.text">{{ item.text }}</span>
+          <Typography :class="$style.text">{{ item.text }}</Typography>
           <Icon
             v-if="currentItem?.value === item.value"
             :class="$style.mark"
@@ -100,8 +100,6 @@ const handleClickOutside = () => changeExpanded(false);
 .label {
   width: fit-content;
   user-select: none;
-
-  @add-mixin text-regular;
 }
 
 .button {
@@ -117,8 +115,6 @@ const handleClickOutside = () => changeExpanded(false);
   transition: outline-color var(--transition-time), background-color var(--transition-time);
   outline: transparent solid var(--size-border-focus);
   user-select: none;
-
-  @add-mixin text-regular;
 
   &:disabled {
     opacity: var(--opacity-item-disabled);
@@ -163,9 +159,8 @@ const handleClickOutside = () => changeExpanded(false);
   height: 40px;
   padding: 6px 12px;
   text-align: left;
+  transition: background-color var(--transition-time);
   user-select: none;
-
-  @add-mixin text-regular;
 
   &:hover {
     background: var(--color-neutral-hover);
