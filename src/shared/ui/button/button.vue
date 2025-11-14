@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 import { Typography } from "@/shared/ui";
 
 import type { ButtonColor, ButtonVariant } from "./types";
@@ -14,14 +16,45 @@ withDefaults(defineProps<Props>(), {
   isDisabled: false,
   variant: "solid",
 });
+
+const buttonRef = ref<HTMLElement>();
+const rippleRef = ref<HTMLElement>();
+
+const handleClick = (event: MouseEvent) => {
+  const ripple = rippleRef.value;
+  const button = buttonRef.value;
+
+  if (!ripple || !button) {
+    return;
+  }
+
+  const buttonRect = button.getBoundingClientRect();
+  const buttonSize = Math.max(buttonRect.width, buttonRect.height);
+
+  ripple.style.width = `${buttonSize}px`;
+  ripple.style.height = `${buttonSize}px`;
+  ripple.style.left = `${event.clientX - buttonRect.left - buttonSize / 2}px`;
+  ripple.style.top = `${event.clientY - buttonRect.top - buttonSize / 2}px`;
+
+  ripple.style.animation = "none";
+  requestAnimationFrame(() => {
+    ripple.style.animation = "";
+  });
+};
 </script>
 
 <template>
   <button
+    ref="buttonRef"
     :class="[$style.root, $style[`${variant}-${color}`]]"
     :disabled="isDisabled"
     type="button"
+    @click="handleClick"
   >
+    <span
+      ref="rippleRef"
+      :class="$style.ripple"
+    />
     <Typography variant="subtitle">
       <slot />
     </Typography>
@@ -30,6 +63,7 @@ withDefaults(defineProps<Props>(), {
 
 <style module lang="postcss">
 .root {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -63,6 +97,17 @@ withDefaults(defineProps<Props>(), {
   }
 }
 
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.25;
+  transform: scale(0);
+  pointer-events: none;
+  animation: ripple 0.5s ease-out;
+  will-change: transform, opacity;
+  background: currentColor;
+}
+
 .bordered-neutral {
   --border-color: var(--color-neutral);
   --background: transparent;
@@ -93,5 +138,12 @@ withDefaults(defineProps<Props>(), {
   --background-hover: var(--color-primary-hover);
   --color: var(--color-primary-fg);
   --color-hover: var(--color-primary-fg);
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
 }
 </style>
