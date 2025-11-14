@@ -1,1 +1,1 @@
-export type IconSize = "s" | "m";
+export type IconSize = "xs" | "s" | "m";

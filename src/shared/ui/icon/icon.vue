@@ -6,11 +6,13 @@ import { Skeleton } from "@/shared/ui";
 import type { IconSize } from "./types";
 
 type Props = {
+  isSpaced?: boolean;
   size?: IconSize;
   name: string;
 };
 
 const props = withDefaults(defineProps<Props>(), {
+  isSpaced: true,
   size: "m",
 });
 
@@ -53,7 +55,7 @@ const icon = defineAsyncComponent(async () => {
 </script>
 
 <template>
-  <div :class="[$style.root, $style[`size-${size}`]]">
+  <div :class="[$style.root, $style[`size-${size}`], isSpaced && $style.spaced]">
     <Suspense>
       <component :is="icon" />
       <template #fallback>
@@ -67,7 +69,16 @@ const icon = defineAsyncComponent(async () => {
 .root {
   width: var(--width);
   height: var(--height);
-  padding: var(--padding);
+
+  &.spaced {
+    padding: var(--padding);
+  }
+}
+
+.size-xs {
+  --width: 16px;
+  --height: 16px;
+  --padding: 2px;
 }
 
 .size-s {
