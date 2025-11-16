@@ -31,14 +31,9 @@ withDefaults(defineProps<SkeletonProps>(), {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 12px;
-    animation: 1.5s shine linear infinite;
-    background: linear-gradient(
-      90deg,
-      rgba(138, 141, 148, 0.08) 8%,
-      rgba(138, 141, 148, 0.14) 18%,
-      rgba(138, 141, 148, 0.08) 32%
-    );
+    border-radius: var(--radius-surface);
+    animation: calc(var(--transition-time) * 6) shine linear infinite;
+    background: var(--color-skeleton);
     background-size: 200% 100%;
   }
 }

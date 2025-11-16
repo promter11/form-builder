@@ -5,6 +5,6 @@
 <style module lang="postcss">
 .root {
   height: inherit;
-  background-color: var(--color-bg);
+  background-color: var(--color-root-bg);
 }
 </style>

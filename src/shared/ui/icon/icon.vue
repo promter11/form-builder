@@ -70,20 +70,20 @@ const icon = defineAsyncComponent(async () => {
 }
 
 .size-xs {
-  --width: 16px;
-  --height: 16px;
-  --padding: 2px;
+  --width: var(--size-icon-xs);
+  --height: var(--size-icon-xs);
+  --padding: var(--padding-icon-xs);
 }
 
 .size-s {
-  --width: 24px;
-  --height: 24px;
-  --padding: 2px;
+  --width: var(--size-icon-s);
+  --height: var(--size-icon-s);
+  --padding: var(--padding-icon-s);
 }
 
 .size-m {
-  --width: 32px;
-  --height: 32px;
-  --padding: 4px;
+  --width: var(--size-icon-m);
+  --height: var(--size-icon-m);
+  --padding: var(--padding-icon-m);
 }
 </style>

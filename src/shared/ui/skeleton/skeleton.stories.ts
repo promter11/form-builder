@@ -19,7 +19,17 @@ const meta = {
     },
     template: `
       <Skeleton v-bind="args">
-        <div style="width: 100%; height: 60px; border-radius: 12px; background-color: mistyrose" />
+        <div
+          style="
+            width: 100%;
+            height: 60px;
+            border-radius: 12px;
+            padding: 12px 16px;
+            background-color: #f8f8f8
+          "
+        >
+          Loaded
+        </div>
       </Skeleton>
     `,
   }),

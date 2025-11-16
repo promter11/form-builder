@@ -6,6 +6,7 @@ export type SelectItem = {
   value: string;
 };
 export type SelectProps = {
+  isDisabled?: boolean;
   items: SelectItem[];
   label?: string;
   placeholder?: string;

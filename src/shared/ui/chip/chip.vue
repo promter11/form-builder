@@ -36,9 +36,9 @@ const onClose = () => emit("close");
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-  padding: 6px 12px;
-  border-radius: 20px;
+  gap: var(--gap-chip);
+  padding: var(--padding-chip);
+  border-radius: var(--radius-chip);
   background: var(--color-neutral);
   color: var(--color-neutral-fg);
 }

@@ -1,34 +1,70 @@
 :root {
-  --color-bg: #f9fafb;
-  --color-border: #e5e7eb;
-  --color-border-focus: rgba(37, 99, 235, 0.25);
+  /* Colors */
+  --color-control-border: #e5e7eb;
+  --color-control-outline: var(--color-primary);
+  --color-control-subtle: #f8f8f8;
+  --color-neutral: #eef0f3;
+  --color-neutral-fg: #111827;
+  --color-neutral-fg-hover: #4b5563;
+  --color-neutral-hover: #f8f9fc;
   --color-primary: #2563eb;
-  --color-primary-active: #1e40af;
   --color-primary-fg: #ffffff;
   --color-primary-fg-hover: #1d4ed8;
   --color-primary-hover: #1d4ed8;
-  --color-neutral: #f3f4f6;
-  --color-neutral-active: #d1d5db;
-  --color-neutral-fg: #1f2937;
-  --color-neutral-fg-hover: #374151;
-  --color-neutral-hover: #e5e7eb;
+  --color-root-bg: #f9fafb;
+  --color-skeleton: linear-gradient(
+    90deg,
+    rgba(138, 141, 148, 0.08) 8%,
+    rgba(138, 141, 148, 0.14) 18%,
+    rgba(138, 141, 148, 0.08) 32%
+  );
   --color-surface: #ffffff;
+  --color-surface-border: #e5e7eb;
 
-  --text-regular-font-family: "Open Sans", sans-serif;
-  --text-regular-font-size: 14px;
-  --text-regular-font-weight: 400;
-  --text-regular-letter-spacing: 0;
-  --text-regular-line-height: 20px;
-  --text-strong-font-family: "Open Sans", sans-serif;
-  --text-strong-font-size: 14px;
-  --text-strong-font-weight: 600;
-  --text-strong-letter-spacing: 0;
-  --text-strong-line-height: 20px;
-
-  --opacity-item-active: 0.975;
+  /* Opacity */
   --opacity-item-disabled: 0.5;
 
-  --size-border-focus: 2px;
+  /* Spacing */
+  --gap-chip: 4px;
+  --gap-control: 8px;
+  --padding-chip: 8px 16px;
+  --padding-control: 12px 16px;
+  --padding-icon-xs: 2px;
+  --padding-icon-s: 2px;
+  --padding-icon-m: 4px;
+  --padding-surface: 12px 16px;
 
+  /* Size */
+  --size-control: 40px;
+  --size-control-border: 1px;
+  --size-control-outline: 2px;
+  --size-icon-xs: 16px;
+  --size-icon-s: 24px;
+  --size-icon-m: 32px;
+  --size-select-list: 210px;
+  --size-surface-border: 1px;
+
+  /* Transform */
+  --scale-item-active: 0.975;
+
+  /* Transition */
   --transition-time: 0.25s;
+
+  /* Typography */
+  --text-body-font-family: "Open Sans", sans-serif;
+  --text-body-font-size: 14px;
+  --text-body-font-weight: 400;
+  --text-body-letter-spacing: 0;
+  --text-body-line-height: 17px;
+  --text-subtitle-font-family: "Open Sans", sans-serif;
+  --text-subtitle-font-size: 16px;
+  --text-subtitle-font-weight: 600;
+  --text-subtitle-letter-spacing: -0.43;
+  --text-subtitle-line-height: 19px;
+
+  /* Radius */
+  --radius-chip: 20px;
+  --radius-control: 12px;
+  --radius-surface: 12px;
+  --radius-max: 999px;
 }

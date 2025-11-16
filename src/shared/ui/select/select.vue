@@ -7,7 +7,9 @@ import type { SelectEmits, SelectProps } from "./types";
 
 const emit = defineEmits<SelectEmits>();
 
-const props = defineProps<SelectProps>();
+const props = withDefaults(defineProps<SelectProps>(), {
+  isDisabled: false,
+});
 
 const id = useId();
 
@@ -42,15 +44,17 @@ const handleClickOutside = () => changeExpanded(false);
     <button
       :id="id"
       v-click-outside="handleClickOutside"
-      :class="[$style.button]"
+      :class="$style.button"
+      :disabled="isDisabled"
       type="button"
       @click="changeExpanded(!isExpanded)"
     >
       <Typography :class="$style.text">{{ currentItem?.text ?? placeholder }}</Typography>
       <Icon
         :class="[$style.chevron, isExpanded && $style.reversed]"
+        :is-spaced="false"
         name="chevron-down"
-        size="s"
+        size="xs"
       />
     </button>
     <Transition name="slide-up">
@@ -69,8 +73,9 @@ const handleClickOutside = () => changeExpanded(false);
           <Icon
             v-if="currentItem?.value === item.value"
             :class="$style.mark"
+            :is-spaced="false"
             name="check"
-            size="s"
+            size="xs"
           />
         </button>
       </div>
@@ -83,7 +88,7 @@ const handleClickOutside = () => changeExpanded(false);
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--gap-control);
 }
 
 .label {
@@ -95,26 +100,28 @@ const handleClickOutside = () => changeExpanded(false);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  height: 40px;
-  padding: 6px 12px;
+  gap: var(--gap-control);
+  height: var(--size-control);
+  padding: var(--padding-control);
   text-align: left;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border: var(--size-control-border) solid var(--color-control-border);
+  border-radius: var(--radius-control);
   transition: outline-color var(--transition-time), background-color var(--transition-time);
-  outline: transparent solid var(--size-border-focus);
+  outline: transparent solid var(--size-control-outline);
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  background: var(--color-control-subtle);
 
   &:disabled {
     opacity: var(--opacity-item-disabled);
   }
 
-  &:focus-visible {
-    outline: var(--size-border-focus) solid var(--color-border-focus);
-    outline-offset: var(--size-border-focus);
+  &:focus-visible:not(:disabled) {
+    outline: var(--size-control-outline) solid var(--color-control-outline);
+    outline-offset: var(--size-control-outline);
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: var(--color-neutral-hover);
   }
 }
@@ -131,11 +138,11 @@ const handleClickOutside = () => changeExpanded(false);
 
 .list {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + var(--gap-control));
   width: 100%;
-  max-height: 210px;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
+  max-height: var(--size-select-list);
+  border: var(--size-control-border) solid var(--color-control-border);
+  border-radius: var(--radius-control);
   overflow-y: auto;
 }
 
@@ -143,10 +150,10 @@ const handleClickOutside = () => changeExpanded(false);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  gap: var(--gap-control);
   width: 100%;
-  height: 40px;
-  padding: 6px 12px;
+  height: var(--size-control);
+  padding: var(--padding-control);
   text-align: left;
   transition: background-color var(--transition-time);
   user-select: none;
@@ -156,7 +163,7 @@ const handleClickOutside = () => changeExpanded(false);
   }
 
   &:not(:last-child) {
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--size-control-border) solid var(--color-control-border);
   }
 }
 
@@ -168,7 +175,7 @@ const handleClickOutside = () => changeExpanded(false);
 
 .mark {
   flex-shrink: 0;
-  border-radius: 100%;
+  border-radius: var(--radius-max);
   background: var(--color-primary);
   color: var(--color-primary-fg);
 }

@@ -26,10 +26,10 @@ const tag = computed(() => tagsByVariant[props.variant]);
 
 <style module lang="postcss">
 .variant-body {
-  @add-mixin text-regular;
+  @add-mixin text-body;
 }
 
 .variant-subtitle {
-  @add-mixin text-strong;
+  @add-mixin text-subtitle;
 }
 </style>

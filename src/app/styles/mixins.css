@@ -1,15 +1,15 @@
-@define-mixin text-regular {
-  font-family: var(--text-regular-font-family);
-  font-size: var(--text-regular-font-size);
-  font-weight: var(--text-regular-font-weight);
-  letter-spacing: var(--text-regular-letter-spacing);
-  line-height: var(--text-regular-line-height);
+@define-mixin text-body {
+  font-family: var(--text-body-font-family);
+  font-weight: var(--text-body-font-weight);
+  font-size: var(--text-body-font-size);
+  letter-spacing: var(--text-body-letter-spacing);
+  line-height: var(--text-body-line-height);
 }
 
-@define-mixin text-strong {
-  font-family: var(--text-strong-font-family);
-  font-size: var(--text-strong-font-size);
-  font-weight: var(--text-strong-font-weight);
-  letter-spacing: var(--text-strong-letter-spacing);
-  line-height: var(--text-strong-line-height);
+@define-mixin text-subtitle {
+  font-family: var(--text-subtitle-font-family);
+  font-weight: var(--text-subtitle-font-weight);
+  font-size: var(--text-subtitle-font-size);
+  letter-spacing: var(--text-subtitle-letter-spacing);
+  line-height: var(--text-subtitle-line-height);
 }

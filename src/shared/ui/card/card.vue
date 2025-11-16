@@ -6,9 +6,9 @@
 
 <style module lang="postcss">
 .root {
-  padding: 12px 16px;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
+  padding: var(--padding-surface);
+  border: var(--size-surface-border) solid var(--color-surface-border);
+  border-radius: var(--radius-surface);
   background-color: var(--color-surface);
 }
 </style>

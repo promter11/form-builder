@@ -3,17 +3,23 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { Card } from "./";
 
 const meta = {
-  title: "Components/Card",
   component: Card,
-  tags: ["autodocs"],
+  render: (args) => ({
+    components: {
+      Card,
+    },
+    setup() {
+      return {
+        args,
+      };
+    },
+    template: `<Card v-bind="args">Card</Card>`,
+  }),
+  title: "Components/Card",
 } satisfies Meta<typeof Card>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Base: Story = {
-  args: {
-    default: "Example",
-  },
-};
+export const Base: Story = {};

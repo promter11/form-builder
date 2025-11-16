@@ -36,6 +36,7 @@ const onInput = (event: Event) => {
       <input
         :id="id"
         :class="$style.input"
+        :disabled="isDisabled"
         :placeholder="placeholder"
         type="text"
         :value="value"
@@ -49,7 +50,7 @@ const onInput = (event: Event) => {
 .root {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--gap-control);
 }
 
 .label {
@@ -58,25 +59,26 @@ const onInput = (event: Event) => {
 }
 
 .wrapper {
-  display: grid;
-  height: 40px;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
+  display: flex;
+  height: var(--size-control);
+  border-radius: var(--radius-control);
   transition: outline-color var(--transition-time);
-  outline: transparent solid var(--size-border-focus);
+  outline: transparent solid var(--size-control-outline);
 
   &:focus-visible {
-    outline: var(--size-border-focus) solid var(--color-border-focus);
-    outline-offset: var(--size-border-focus);
+    outline: var(--size-control-outline) solid var(--color-control-outline);
+    outline-offset: var(--size-control-outline);
   }
 }
 
 .input {
   width: 100%;
-  padding: 6px 12px;
+  padding: var(--padding-control);
+  border: var(--size-control-border) solid var(--color-control-border);
   border-radius: inherit;
   transition: background-color var(--transition-time);
   outline: none;
+  background: var(--color-control-subtle);
 
   &:disabled {
     opacity: var(--opacity-item-disabled);
