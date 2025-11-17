@@ -1,5 +1,7 @@
 <template>
-  <div :class="$style.root" />
+  <div :class="$style.root">
+    <RouterView />
+  </div>
 </template>
 
 <style module lang="postcss">
