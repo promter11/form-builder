@@ -64,8 +64,12 @@ const handleClick = (event: MouseEvent) => {
   padding: var(--padding-control);
   border: var(--size-control-border) solid var(--border-color);
   border-radius: var(--radius-control);
-  transition: border var(--transition-time), outline-color var(--transition-time), transform var(--transition-time),
-    background-color var(--transition-time), color var(--transition-time);
+  transition:
+    border var(--transition-time),
+    outline-color var(--transition-time),
+    transform var(--transition-time),
+    background-color var(--transition-time),
+    color var(--transition-time);
   outline: transparent solid var(--size-control-outline);
   overflow: hidden;
   user-select: none;

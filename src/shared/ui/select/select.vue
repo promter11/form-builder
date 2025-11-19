@@ -106,7 +106,9 @@ const handleClickOutside = () => changeExpanded(false);
   text-align: left;
   border: var(--size-control-border) solid var(--color-control-border);
   border-radius: var(--radius-control);
-  transition: outline-color var(--transition-time), background-color var(--transition-time);
+  transition:
+    outline-color var(--transition-time),
+    background-color var(--transition-time);
   outline: transparent solid var(--size-control-outline);
   user-select: none;
   -webkit-tap-highlight-color: transparent;

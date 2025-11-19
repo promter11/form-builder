@@ -1,7 +1,7 @@
 import "@/app/styles/index.css";
 
-import type { Preview } from "@storybook/vue3-vite";
 import { setup } from "@storybook/vue3";
+import type { Preview } from "@storybook/vue3-vite";
 
 import { clickOutsideDirective } from "../src/shared/directives";
 
@@ -13,8 +13,8 @@ const preview: Preview = {
   parameters: {
     controls: {
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/i,
       },
     },
   },
