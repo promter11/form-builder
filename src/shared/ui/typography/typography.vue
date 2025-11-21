@@ -10,6 +10,7 @@ const props = withDefaults(defineProps<TypographyProps>(), {
 const tagsByVariant = {
   body: "p",
   subtitle: "h2",
+  title: "h1",
 } as const satisfies Record<TypographyVariant, TypographyTag>;
 
 const tag = computed(() => tagsByVariant[props.variant]);
@@ -31,5 +32,9 @@ const tag = computed(() => tagsByVariant[props.variant]);
 
 .variant-subtitle {
   @add-mixin text-subtitle;
+}
+
+.variant-title {
+  @add-mixin text-title;
 }
 </style>

@@ -15,7 +15,7 @@ const formStore = useFormStore();
 <template>
   <Button
     color="neutral"
-    variant="bordered"
+    variant="solid"
     @click="formStore.addField(field)"
   >
     {{ field.label }}

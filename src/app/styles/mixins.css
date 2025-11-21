@@ -13,3 +13,11 @@
   letter-spacing: var(--text-subtitle-letter-spacing);
   line-height: var(--text-subtitle-line-height);
 }
+
+@define-mixin text-title {
+  font-family: var(--text-title-font-family);
+  font-weight: var(--text-title-font-weight);
+  font-size: var(--text-title-font-size);
+  letter-spacing: var(--text-title-letter-spacing);
+  line-height: var(--text-title-line-height);
+}

@@ -1,4 +1,7 @@
 :root {
+  /* Box-shadow */
+  --shadow-surface: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+
   /* Colors */
   --color-control-border: #e5e7eb;
   --color-control-outline: var(--color-primary);
@@ -31,6 +34,7 @@
   --gap-chip: 4px;
   --gap-control: 8px;
   --padding-chip: 8px 16px;
+  --padding-container: 16px;
   --padding-control: 12px 16px;
   --padding-icon-xs: 2px;
   --padding-icon-s: 2px;
@@ -39,6 +43,7 @@
 
   /* Size */
   --size-checkbox: 24px;
+  --size-container: 1440px;
   --size-control: 40px;
   --size-control-border: 1px;
   --size-control-outline: 2px;
@@ -65,6 +70,11 @@
   --text-subtitle-font-weight: 600;
   --text-subtitle-letter-spacing: -0.43;
   --text-subtitle-line-height: 19px;
+  --text-title-font-family: "Open Sans", sans-serif;
+  --text-title-font-size: 24px;
+  --text-title-font-weight: 700;
+  --text-title-letter-spacing: -0.43;
+  --text-title-line-height: 29px;
 
   /* Radius */
   --radius-checkbox: 8px;

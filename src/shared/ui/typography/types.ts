@@ -2,4 +2,4 @@ export type TypographyProps = {
   variant?: TypographyVariant;
 };
 export type TypographyTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
-export type TypographyVariant = "body" | "subtitle";
+export type TypographyVariant = "body" | "subtitle" | "title";
