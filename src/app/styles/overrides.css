@@ -11,3 +11,22 @@ body,
 #app {
   height: 100%;
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  transition: background-color var(--transition-time);
+  background: var(--color-scroll-thumb);
+
+  &:hover {
+    background: var(--color-scroll-thumb-hover);
+  }
+}

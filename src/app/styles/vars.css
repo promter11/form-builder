@@ -12,6 +12,8 @@
   --color-primary-fg-hover: #1d4ed8;
   --color-primary-hover: #1d4ed8;
   --color-root-bg: #f9fafb;
+  --color-scroll-thumb: rgba(0, 0, 0, 0.1);
+  --color-scroll-thumb-hover: rgba(0, 0, 0, 0.2);
   --color-skeleton: linear-gradient(
     90deg,
     rgba(138, 141, 148, 0.08) 8%,

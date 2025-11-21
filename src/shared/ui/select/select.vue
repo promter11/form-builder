@@ -62,22 +62,24 @@ const handleClickOutside = () => changeExpanded(false);
         v-if="isExpanded"
         :class="$style.list"
       >
-        <button
-          v-for="item of items"
-          :key="item.value"
-          :class="$style.item"
-          type="button"
-          @click="handleChange(item.value)"
-        >
-          <Typography :class="$style.text">{{ item.text }}</Typography>
-          <Icon
-            v-if="currentItem?.value === item.value"
-            :class="$style.mark"
-            :is-spaced="false"
-            name="check"
-            size="xs"
-          />
-        </button>
+        <div :class="$style.inner">
+          <button
+            v-for="item of items"
+            :key="item.value"
+            :class="$style.item"
+            type="button"
+            @click="handleChange(item.value)"
+          >
+            <Typography :class="$style.text">{{ item.text }}</Typography>
+            <Icon
+              v-if="currentItem?.value === item.value"
+              :class="$style.mark"
+              :is-spaced="false"
+              name="check"
+              size="xs"
+            />
+          </button>
+        </div>
       </div>
     </Transition>
   </div>
@@ -142,9 +144,13 @@ const handleClickOutside = () => changeExpanded(false);
   position: absolute;
   top: calc(100% + var(--gap-control));
   width: 100%;
-  max-height: var(--size-select-list);
   border: var(--size-control-border) solid var(--color-control-border);
   border-radius: var(--radius-control);
+  overflow: hidden;
+}
+
+.inner {
+  max-height: var(--size-select-list);
   overflow-y: auto;
 }
 
