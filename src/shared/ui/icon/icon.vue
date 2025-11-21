@@ -61,6 +61,7 @@ const icon = defineAsyncComponent(async () => {
 
 <style module lang="postcss">
 .root {
+  display: inline-flex;
   width: var(--width);
   height: var(--height);
 

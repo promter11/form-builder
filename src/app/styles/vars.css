@@ -27,6 +27,7 @@
   --opacity-item-disabled: 0.5;
 
   /* Spacing */
+  --gap-checkbox: 8px;
   --gap-chip: 4px;
   --gap-control: 8px;
   --padding-chip: 8px 16px;
@@ -37,6 +38,7 @@
   --padding-surface: 12px 16px;
 
   /* Size */
+  --size-checkbox: 24px;
   --size-control: 40px;
   --size-control-border: 1px;
   --size-control-outline: 2px;
@@ -65,6 +67,7 @@
   --text-subtitle-line-height: 19px;
 
   /* Radius */
+  --radius-checkbox: 8px;
   --radius-chip: 20px;
   --radius-control: 12px;
   --radius-surface: 12px;
