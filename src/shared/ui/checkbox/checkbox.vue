@@ -21,6 +21,7 @@ const onChange = () => emit("change", !props.isChecked);
       <Icon
         v-if="isChecked"
         :class="$style.icon"
+        is-spaced
         name="check"
         size="s"
       />

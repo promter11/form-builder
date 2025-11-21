@@ -23,7 +23,6 @@ const onClose = () => emit("close");
       @click="onClose"
     >
       <Icon
-        :is-spaced="false"
         name="trash"
         size="xs"
       />

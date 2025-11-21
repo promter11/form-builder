@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { Container, Divider } from "@/shared/ui";
+import { Container, Divider, Toast, useToast } from "@/shared/ui";
 import { Header } from "@/widgets/header";
+
+const toast = useToast();
 </script>
 
 <template>
@@ -14,6 +16,12 @@ import { Header } from "@/widgets/header";
         </main>
       </div>
     </Container>
+    <Teleport to="body">
+      <Toast
+        v-bind="toast?.data?.value"
+        v-on="toast?.actions"
+      />
+    </Teleport>
   </div>
 </template>
 

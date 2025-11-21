@@ -8,4 +8,5 @@ export * from "./icon";
 export * from "./input";
 export * from "./select";
 export * from "./skeleton";
+export * from "./toast";
 export * from "./typography";

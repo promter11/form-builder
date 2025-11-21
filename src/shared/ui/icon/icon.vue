@@ -6,7 +6,7 @@ import { Skeleton } from "../";
 import type { IconProps } from "./types";
 
 const props = withDefaults(defineProps<IconProps>(), {
-  isSpaced: true,
+  isSpaced: false,
   size: "m",
 });
 

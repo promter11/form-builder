@@ -1,15 +1,34 @@
 import "@/app/styles/index.css";
 
 import { createPinia } from "pinia";
-import { createApp } from "vue";
+import { createApp, ref } from "vue";
 
 import { App } from "@/app";
 import { router } from "@/app/routes";
 import { clickOutsideDirective } from "@/shared/directives";
+import { toastKey } from "@/shared/ui";
+import type { ToastProps } from "@/shared/ui";
 
 const app = createApp(App);
 
+const toast = ref<ToastProps>();
+
 app.directive("click-outside", clickOutsideDirective);
+
+app.provide(toastKey, {
+  actions: {
+    close: () => {
+      toast.value = undefined;
+    },
+    create: (payload: ToastProps) => {
+      toast.value = {
+        ...payload,
+        value: true,
+      };
+    },
+  },
+  data: toast,
+});
 
 app.use(createPinia());
 app.use(router);

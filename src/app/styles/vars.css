@@ -23,6 +23,7 @@
     rgba(138, 141, 148, 0.14) 18%,
     rgba(138, 141, 148, 0.08) 32%
   );
+  --color-success: #22c55e;
   --color-surface: #ffffff;
   --color-surface-border: #e5e7eb;
 
@@ -33,6 +34,7 @@
   --gap-checkbox: 8px;
   --gap-chip: 4px;
   --gap-control: 8px;
+  --gap-toast: 8px;
   --padding-chip: 8px 16px;
   --padding-container: 16px;
   --padding-control: 12px 16px;
@@ -40,6 +42,7 @@
   --padding-icon-s: 2px;
   --padding-icon-m: 4px;
   --padding-surface: 12px 16px;
+  --padding-toast: 16px;
 
   /* Size */
   --size-checkbox: 24px;
@@ -52,6 +55,7 @@
   --size-icon-m: 32px;
   --size-select-list: 210px;
   --size-surface-border: 1px;
+  --size-toast: 320px;
 
   /* Transform */
   --scale-item-active: 0.975;

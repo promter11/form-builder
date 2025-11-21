@@ -52,7 +52,6 @@ const handleClickOutside = () => changeExpanded(false);
       <Typography :class="$style.text">{{ currentItem?.text ?? placeholder }}</Typography>
       <Icon
         :class="[$style.chevron, isExpanded && $style.reversed]"
-        :is-spaced="false"
         name="chevron-down"
         size="xs"
       />
@@ -74,9 +73,8 @@ const handleClickOutside = () => changeExpanded(false);
             <Icon
               v-if="currentItem?.value === item.value"
               :class="$style.mark"
-              :is-spaced="false"
-              name="check"
-              size="xs"
+              name="success"
+              size="s"
             />
           </button>
         </div>
@@ -183,8 +181,6 @@ const handleClickOutside = () => changeExpanded(false);
 
 .mark {
   flex-shrink: 0;
-  border-radius: var(--radius-max);
-  background: var(--color-primary);
-  color: var(--color-primary-fg);
+  color: var(--color-primary);
 }
 </style>
