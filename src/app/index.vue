@@ -7,7 +7,7 @@ const toast = useToast();
 
 <template>
   <div :class="$style.root">
-    <Container>
+    <Container :class="$style.container">
       <div :class="$style.surface">
         <Header />
         <Divider />
@@ -31,7 +31,14 @@ const toast = useToast();
   background: var(--color-root-bg);
 }
 
+.container {
+  height: inherit;
+}
+
 .surface {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
   border-radius: var(--radius-surface);
   box-shadow: var(--shadow-surface);
   overflow: hidden;
@@ -40,5 +47,6 @@ const toast = useToast();
 
 .main {
   padding: var(--padding-container);
+  overflow-y: auto;
 }
 </style>

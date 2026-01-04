@@ -4,10 +4,15 @@ import { ref } from "vue";
 import type { Field } from "@/entities/field";
 
 export const useFormStore = defineStore("form", () => {
+  const activeFieldId = ref("");
   const fields = ref<Field[]>([]);
 
   const addField = (field: Field) => {
     fields.value = [...fields.value, field];
+  };
+
+  const changeActiveFieldId = (id: string) => {
+    activeFieldId.value = id;
   };
 
   const editField = (id: string, payload: Partial<Field>) => {
@@ -35,6 +40,8 @@ export const useFormStore = defineStore("form", () => {
   };
 
   return {
+    activeFieldId,
+    changeActiveFieldId,
     fields,
     addField,
     editField,

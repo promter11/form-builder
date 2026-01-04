@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { fields } from "@/entities/field";
+import { buttons } from "@/entities/field";
 import { AddField } from "@/features/form";
 import { Card, Typography } from "@/shared/ui";
 </script>
@@ -9,9 +9,9 @@ import { Card, Typography } from "@/shared/ui";
     <Typography variant="subtitle">Add field</Typography>
     <div :class="$style.container">
       <AddField
-        v-for="field of fields"
-        :key="field.id"
-        :field="field"
+        v-for="button of buttons"
+        :key="button.id"
+        :data="button"
       />
     </div>
   </Card>
@@ -21,13 +21,13 @@ import { Card, Typography } from "@/shared/ui";
 .root {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--gap-card);
 }
 
 .container {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--gap-card);
 }
 </style>

@@ -1,5 +1,6 @@
 import "@/app/styles/index.css";
 
+import { nanoid } from "nanoid";
 import { createPinia } from "pinia";
 import { createApp, ref } from "vue";
 
@@ -23,6 +24,7 @@ app.provide(toastKey, {
     create: (payload: ToastProps) => {
       toast.value = {
         ...payload,
+        id: nanoid(),
         value: true,
       };
     },

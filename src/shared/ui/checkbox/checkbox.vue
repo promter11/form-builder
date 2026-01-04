@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon, Typography } from "../";
 
-import type { CheckboxEmits, CheckboxProps } from "./types.ts";
+import type { CheckboxEmits, CheckboxProps } from "./types";
 
 const emit = defineEmits<CheckboxEmits>();
 

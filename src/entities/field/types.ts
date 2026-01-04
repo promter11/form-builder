@@ -1,3 +1,9 @@
+export type AddButton = {
+  id: string;
+  text: string;
+  type: FieldType;
+};
+
 export type Field = {
   disabled: boolean;
   label: string;
@@ -7,4 +13,4 @@ export type Field = {
   required: boolean;
 };
 
-export type FieldType = "text";
+export type FieldType = "checkbox" | "number" | "select" | "switch" | "text";

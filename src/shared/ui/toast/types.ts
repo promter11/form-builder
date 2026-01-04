@@ -11,6 +11,8 @@ export type ToastInjection = {
   };
 };
 export type ToastProps = {
+  duration?: number;
+  id?: string;
   title?: string;
   value?: boolean;
   variant?: ToastVariant;
