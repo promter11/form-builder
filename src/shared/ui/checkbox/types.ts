@@ -3,4 +3,7 @@ export type CheckboxEmits = {
 };
 export type CheckboxProps = {
   isChecked?: boolean;
+  isDisabled?: boolean;
+  name?: string;
+  value?: unknown;
 };

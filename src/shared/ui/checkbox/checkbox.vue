@@ -7,13 +7,14 @@ const emit = defineEmits<CheckboxEmits>();
 
 const props = withDefaults(defineProps<CheckboxProps>(), {
   isChecked: false,
+  isDisabled: false,
 });
 
 const onChange = () => emit("change", !props.isChecked);
 </script>
 
 <template>
-  <label :class="$style.root">
+  <label :class="[$style.root, isDisabled && $style.disabled]">
     <span
       :class="[$style.box, isChecked && $style.checked]"
       tabindex="0"
@@ -30,10 +31,13 @@ const onChange = () => emit("change", !props.isChecked);
       <slot />
     </Typography>
     <input
+      :checked="isChecked"
       :class="$style.input"
+      :disabled="isDisabled"
+      :name="name"
       tabindex="-1"
       type="checkbox"
-      :value="isChecked"
+      :value="value"
       @change="onChange"
     />
   </label>
@@ -51,6 +55,11 @@ const onChange = () => emit("change", !props.isChecked);
     .box:not(.checked) {
       background: var(--color-neutral-hover);
     }
+  }
+
+  &.disabled {
+    opacity: var(--opacity-item-disabled);
+    pointer-events: none;
   }
 }
 

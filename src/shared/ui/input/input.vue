@@ -49,6 +49,7 @@ const onInput = (event: Event) => {
 <style module lang="postcss">
 .root {
   display: flex;
+  flex-basis: 100%;
   flex-direction: column;
   gap: var(--gap-control);
 }

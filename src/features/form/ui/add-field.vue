@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { nanoid } from "nanoid";
 
-import type { AddButton } from "@/entities/field";
+import type { FieldPreset } from "@/entities/field";
 import { fields } from "@/entities/field";
 import { useFormStore } from "@/features/form";
 import { Button, useToast } from "@/shared/ui";
 
 type Props = {
-  data: AddButton;
+  preset: FieldPreset;
 };
 
 const props = defineProps<Props>();
@@ -18,7 +18,7 @@ const toast = useToast();
 
 const createField = () => {
   formStore.addField({
-    ...fields[props.data.type],
+    ...fields[props.preset.type],
     id: nanoid(),
   });
   toast?.actions?.create({
@@ -34,6 +34,6 @@ const createField = () => {
     variant="solid"
     @click="createField"
   >
-    {{ data.text }}
+    {{ preset.text }}
   </Button>
 </template>

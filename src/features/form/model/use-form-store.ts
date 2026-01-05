@@ -1,11 +1,13 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 import type { Field } from "@/entities/field";
 
 export const useFormStore = defineStore("form", () => {
   const activeFieldId = ref("");
   const fields = ref<Field[]>([]);
+
+  const activeField = computed(() => fields.value.find((field) => field.id === activeFieldId.value));
 
   const addField = (field: Field) => {
     fields.value = [...fields.value, field];
@@ -40,6 +42,7 @@ export const useFormStore = defineStore("form", () => {
   };
 
   return {
+    activeField,
     activeFieldId,
     changeActiveFieldId,
     fields,

@@ -54,6 +54,7 @@ onBeforeUnmount(() => clearTimeout(timeout));
       </div>
       <button
         :class="$style.button"
+        type="button"
         @click="onClose"
       >
         <Icon

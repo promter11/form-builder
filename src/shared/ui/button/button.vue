@@ -61,6 +61,7 @@ const handleClick = (event: MouseEvent) => {
   display: inline-flex;
   align-items: center;
   gap: var(--gap-control);
+  height: var(--size-control);
   padding: var(--padding-control);
   border: var(--size-control-border) solid var(--border-color);
   border-radius: var(--radius-control);

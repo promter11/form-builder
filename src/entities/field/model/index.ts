@@ -1,8 +1,53 @@
 import { nanoid } from "nanoid";
 
-import type { AddButton, Field, FieldType } from "../types";
+import type { FieldPreset, SettingDefinition, UnionField } from "../types";
 
-export const buttons = [
+export const fields = {
+  checkbox: {
+    checked: false,
+    disabled: false,
+    id: "",
+    label: "Checkbox",
+    name: "",
+    type: "checkbox",
+    value: "",
+  },
+  number: {
+    disabled: false,
+    id: "",
+    placeholder: "Placeholder",
+    type: "number",
+    label: "Number input",
+    value: "",
+  },
+  select: {
+    disabled: false,
+    id: "",
+    items: [{ id: nanoid(), key: "", value: "" }],
+    label: "Select",
+    placeholder: "Placeholder",
+    type: "select",
+    value: "",
+  },
+  switch: {
+    checked: false,
+    disabled: false,
+    label: "Switch",
+    id: "",
+    type: "switch",
+    value: "",
+  },
+  text: {
+    disabled: false,
+    id: "",
+    label: "Text input",
+    placeholder: "Placeholder",
+    type: "text",
+    value: "",
+  },
+} as const satisfies UnionField;
+
+export const presets = [
   {
     id: nanoid(),
     text: "Text input",
@@ -28,47 +73,72 @@ export const buttons = [
     text: "Switch",
     type: "switch",
   },
-] as const satisfies AddButton[];
+] as const satisfies FieldPreset[];
 
-export const fields = {
-  checkbox: {
-    required: false,
-    disabled: false,
-    id: "",
-    placeholder: "Placeholder",
-    type: "checkbox",
-    label: "Checkbox",
+const settingDefinitions = {
+  checked: {
+    control: "checkbox",
+    id: "checked",
+    label: "Checked",
   },
-  number: {
-    required: false,
-    disabled: false,
-    id: "",
-    placeholder: "Placeholder",
-    type: "number",
-    label: "Number input",
+  disabled: {
+    control: "checkbox",
+    id: "disabled",
+    label: "Disabled",
   },
-  select: {
-    required: false,
-    disabled: false,
-    id: "",
-    placeholder: "Placeholder",
-    type: "select",
-    label: "Select",
+  items: {
+    control: "keyValueInput",
+    id: "items",
+    label: "Items",
   },
-  switch: {
-    required: false,
-    disabled: false,
-    id: "",
-    placeholder: "Placeholder",
-    type: "switch",
-    label: "Switch",
+  label: {
+    control: "text",
+    id: "label",
+    label: "Label",
   },
-  text: {
-    required: false,
-    disabled: false,
-    id: "",
-    placeholder: "Placeholder",
-    type: "text",
-    label: "Text input",
+  placeholder: {
+    control: "text",
+    id: "placeholder",
+    label: "Placeholder",
   },
-} as const satisfies Record<FieldType, Field>;
+  name: {
+    control: "text",
+    id: "name",
+    label: "Name",
+  },
+  value: {
+    control: "text",
+    id: "value",
+    label: "Value",
+  },
+} as const satisfies SettingDefinition;
+
+export const settings = {
+  checkbox: [
+    settingDefinitions.label,
+    settingDefinitions.name,
+    settingDefinitions.value,
+    settingDefinitions.checked,
+    settingDefinitions.disabled,
+  ],
+  number: [
+    settingDefinitions.label,
+    settingDefinitions.placeholder,
+    settingDefinitions.value,
+    settingDefinitions.disabled,
+  ],
+  select: [
+    settingDefinitions.label,
+    settingDefinitions.placeholder,
+    settingDefinitions.items,
+    settingDefinitions.value,
+    settingDefinitions.disabled,
+  ],
+  switch: [settingDefinitions.label, settingDefinitions.value, settingDefinitions.checked, settingDefinitions.disabled],
+  text: [
+    settingDefinitions.label,
+    settingDefinitions.placeholder,
+    settingDefinitions.value,
+    settingDefinitions.disabled,
+  ],
+} as const;

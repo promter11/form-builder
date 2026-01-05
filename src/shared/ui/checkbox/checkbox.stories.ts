@@ -9,6 +9,21 @@ const meta = {
         type: "boolean",
       },
     },
+    isDisabled: {
+      control: {
+        type: "boolean",
+      },
+    },
+    name: {
+      control: {
+        type: "text",
+      },
+    },
+    value: {
+      control: {
+        type: "text",
+      },
+    },
   },
   component: Checkbox,
   render: (args) => ({
@@ -37,5 +52,8 @@ type Story = StoryObj<typeof meta>;
 export const Base: Story = {
   args: {
     isChecked: false,
+    isDisabled: false,
+    name: "check",
+    value: "example",
   },
 };

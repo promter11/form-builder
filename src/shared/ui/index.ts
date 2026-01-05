@@ -6,6 +6,7 @@ export * from "./container";
 export * from "./divider";
 export * from "./icon";
 export * from "./input";
+export * from "./key-value-input";
 export * from "./select";
 export * from "./skeleton";
 export * from "./toast";

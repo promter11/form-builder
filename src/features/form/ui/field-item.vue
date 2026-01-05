@@ -3,7 +3,7 @@ import { toRef } from "vue";
 
 import type { Field } from "@/entities/field";
 import { useFormStore, useDragReorder } from "@/features/form";
-import { Card, Icon } from "@/shared/ui";
+import { Card, Icon, Typography } from "@/shared/ui";
 
 const formStore = useFormStore();
 
@@ -34,36 +34,36 @@ const handleRemove = (field: Field) => {
       <button
         :class="$style.dragButton"
         draggable="true"
+        type="button"
         @dragend="dragReorder.reset"
         @dragstart="dragReorder.start(index)"
       >
         <Icon
-          is-spaced
           name="dots-vertical"
-          size="s"
+          size="xs"
         />
       </button>
-      {{ field.type }} — {{ field.label }}
+      <Typography>{{ field.label }}</Typography>
     </div>
     <div :class="$style.actions">
       <button
         :class="$style.editButton"
+        type="button"
         @click="formStore.changeActiveFieldId(formStore.activeFieldId === field.id ? '' : field.id)"
       >
         <Icon
-          is-spaced
           name="pencil"
-          size="s"
+          size="xs"
         />
       </button>
       <button
         :class="$style.removeButton"
+        type="button"
         @click="handleRemove(field)"
       >
         <Icon
-          is-spaced
           name="trash"
-          size="s"
+          size="xs"
         />
       </button>
     </div>
@@ -75,6 +75,7 @@ const handleRemove = (field: Field) => {
   display: flex;
   align-items: center;
   gap: var(--gap-list-item);
+  height: var(--size-control);
   user-select: none;
   transition:
     opacity var(--transition-time),
@@ -109,6 +110,5 @@ const handleRemove = (field: Field) => {
 
 .dragButton {
   cursor: move;
-  color: var(--color-neutral-fg);
 }
 </style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { buttons } from "@/entities/field";
+import { presets } from "@/entities/field";
 import { AddField } from "@/features/form";
 import { Card, Typography } from "@/shared/ui";
 </script>
@@ -9,9 +9,9 @@ import { Card, Typography } from "@/shared/ui";
     <Typography variant="subtitle">Add field</Typography>
     <div :class="$style.container">
       <AddField
-        v-for="button of buttons"
-        :key="button.id"
-        :data="button"
+        v-for="preset of presets"
+        :key="preset.id"
+        :preset="preset"
       />
     </div>
   </Card>

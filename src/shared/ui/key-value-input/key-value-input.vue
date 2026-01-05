@@ -1,0 +1,73 @@
+<script setup lang="ts">
+import { Button, Icon, Input } from "@/shared/ui";
+
+import type { KeyValueInputEmits, KeyValueInputItem, KeyValueInputProps } from "./types";
+
+const emit = defineEmits<KeyValueInputEmits>();
+
+defineProps<KeyValueInputProps>();
+
+const onAdd = () => emit("add");
+const onChange = (index: number, payload: Partial<KeyValueInputItem>) => emit("change", index, payload);
+const onRemove = (index: number) => emit("remove", index);
+</script>
+
+<template>
+  <div :class="$style.root">
+    <div
+      v-for="(item, index) of items"
+      :key="item.id"
+      :class="$style.container"
+    >
+      <Input
+        placeholder="Key"
+        :value="item.key"
+        @input="(key) => onChange(index, { key })"
+      />
+      —
+      <Input
+        placeholder="Value"
+        :value="item.value"
+        @input="(value) => onChange(index, { value })"
+      />
+      <button
+        v-if="items.length > 1"
+        :class="$style.button"
+        type="button"
+        @click="onRemove(index)"
+      >
+        <Icon
+          name="trash"
+          size="xs"
+        />
+      </button>
+    </div>
+    <Button
+      :class="$style.button"
+      color="primary"
+      @click="onAdd"
+    >
+      Add pair
+    </Button>
+  </div>
+</template>
+
+<style module lang="postcss">
+.root {
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
+  gap: var(--gap-card);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-control);
+}
+
+.button {
+  display: inline-flex;
+  width: fit-content;
+}
+</style>
