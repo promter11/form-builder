@@ -1,6 +1,10 @@
 :root {
   /* Box-shadow */
   --shadow-surface: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+  --shadow-switch:
+    0px 0px 4px 0px rgba(0, 0, 0, 0.05),
+    0px 2px 10px 0px rgba(0, 0, 0, 0.05),
+    0px 0px 2px 0px rgba(0, 0, 0, 0.05);
 
   /* Colors */
   --color-control-border: #e5e7eb;
@@ -46,6 +50,8 @@
   --padding-icon-s: 2px;
   --padding-icon-m: 4px;
   --padding-surface: 12px 16px;
+  --padding-switch: 2px;
+  --padding-tab: 6px 12px;
   --padding-toast: 16px;
 
   /* Size */
@@ -59,10 +65,14 @@
   --size-icon-m: 32px;
   --size-select-list: 210px;
   --size-surface-border: 1px;
+  --size-switch: 24px;
+  --size-switch-circle: 18px;
+  --size-tab: 40px;
+  --size-tabs-underline: 2px;
   --size-toast: 320px;
 
   /* Transform */
-  --scale-item-active: 0.975;
+  --transform-scale-item-active: 0.975;
 
   /* Transition */
   --transition-time: 0.25s;
@@ -89,5 +99,7 @@
   --radius-chip: 20px;
   --radius-control: 12px;
   --radius-surface: 12px;
+  --radius-switch: 24px;
+  --radius-tab: 8px;
   --radius-max: 999px;
 }

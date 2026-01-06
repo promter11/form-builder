@@ -79,7 +79,7 @@ const handleClick = (event: MouseEvent) => {
   color: var(--color);
 
   &:active:not(:disabled) {
-    transform: scale(var(--scale-item-active));
+    transform: scale(var(--transform-scale-item-active));
   }
 
   &:disabled {

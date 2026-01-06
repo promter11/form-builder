@@ -9,10 +9,16 @@ const emit = defineEmits<InputEmits>();
 
 withDefaults(defineProps<InputProps>(), {
   isDisabled: false,
+  inputMode: "text",
 });
 
 const id = useId();
 
+const onBeforeInput = (event: Event) => {
+  if (event.target instanceof HTMLInputElement) {
+    emit("input", event.target.value);
+  }
+};
 const onInput = (event: Event) => {
   if (event.target instanceof HTMLInputElement) {
     emit("input", event.target.value);
@@ -37,9 +43,11 @@ const onInput = (event: Event) => {
         :id="id"
         :class="$style.input"
         :disabled="isDisabled"
+        :inputmode="inputMode"
         :placeholder="placeholder"
         type="text"
         :value="value"
+        @beforeinput="onBeforeInput"
         @input="onInput"
       />
     </Typography>
