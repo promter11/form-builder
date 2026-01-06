@@ -13,7 +13,7 @@ const meta = {
       control: {
         type: "select",
       },
-      options: ["success"],
+      options: ["danger", "success"],
     },
   },
   component: Toast,

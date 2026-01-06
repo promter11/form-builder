@@ -73,7 +73,7 @@ const handleClickOutside = () => changeExpanded(false);
             <Icon
               v-if="currentItem?.value === item.value"
               :class="$style.mark"
-              name="success"
+              name="circle-check"
               size="s"
             />
           </button>

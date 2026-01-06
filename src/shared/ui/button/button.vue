@@ -49,7 +49,10 @@ const handleClick = (event: MouseEvent) => {
       ref="rippleRef"
       :class="$style.ripple"
     />
-    <Typography variant="subtitle">
+    <Typography
+      :class="$style.text"
+      variant="subtitle"
+    >
       <slot />
     </Typography>
   </button>
@@ -106,6 +109,12 @@ const handleClick = (event: MouseEvent) => {
   animation: ripple calc(var(--transition-time) * 2) ease-out;
   will-change: transform, opacity;
   background: currentColor;
+}
+
+.text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-control);
 }
 
 .bordered-neutral {

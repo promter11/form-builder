@@ -15,7 +15,8 @@ const props = withDefaults(defineProps<ToastProps>(), {
 });
 
 const iconsByVariant = {
-  success: "success",
+  danger: "danger",
+  success: "circle-check",
 } as const satisfies Record<ToastVariant, string>;
 
 let timeout: ReturnType<typeof setTimeout>;
@@ -106,6 +107,12 @@ onBeforeUnmount(() => clearTimeout(timeout));
 
 .button {
   display: inline-flex;
+}
+
+.variant-danger {
+  .icon {
+    color: var(--color-danger);
+  }
 }
 
 .variant-success {

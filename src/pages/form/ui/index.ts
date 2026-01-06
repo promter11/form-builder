@@ -1,1 +1,1 @@
-export { default as BuildPage } from "./build.vue";
+export { default as FormPage } from "./form.vue";

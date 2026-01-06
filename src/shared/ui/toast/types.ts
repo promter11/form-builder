@@ -17,4 +17,4 @@ export type ToastProps = {
   value?: boolean;
   variant?: ToastVariant;
 };
-export type ToastVariant = "success";
+export type ToastVariant = "danger" | "success";

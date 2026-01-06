@@ -1,5 +1,6 @@
 export type Tab = {
   id: string;
+  isDisabled?: boolean;
   label: string;
   value: string;
 };

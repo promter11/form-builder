@@ -51,7 +51,7 @@ const setTabRef = (element: Element | ComponentPublicInstance | null, value: str
   }
 };
 
-onMounted(() => setIndicator(props.value));
+onMounted(() => changeItem(props.value));
 </script>
 
 <template>
@@ -64,6 +64,7 @@ onMounted(() => setIndicator(props.value));
       :key="item.id"
       :ref="(element) => setTabRef(element, item.value)"
       :class="$style.tab"
+      :disabled="item.isDisabled"
       type="button"
       @click="changeItem(item.value)"
     >
@@ -92,6 +93,10 @@ onMounted(() => setIndicator(props.value));
   border-top-right-radius: var(--radius-tab);
   transition: background-color var(--transition-time);
   background: transparent;
+
+  &:disabled {
+    opacity: var(--opacity-item-disabled);
+  }
 
   &:hover {
     background: var(--color-neutral-hover);

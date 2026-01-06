@@ -10,6 +10,7 @@
   --color-control-border: #e5e7eb;
   --color-control-outline: var(--color-primary);
   --color-control-subtle: #f8f8f8;
+  --color-danger: #dc2626;
   --color-neutral: #eef0f3;
   --color-neutral-fg: #111827;
   --color-neutral-fg-hover: #4b5563;
@@ -68,7 +69,7 @@
   --size-switch: 24px;
   --size-switch-circle: 18px;
   --size-tab: 40px;
-  --size-tabs-underline: 2px;
+  --size-tabs-underline: 1px;
   --size-toast: 320px;
 
   /* Transform */

@@ -1,11 +1,28 @@
-import { createMemoryHistory, createRouter } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
-import { BuildPage } from "@/pages/form";
+import { BuilderPage } from "@/pages/builder";
+import { FormPage } from "@/pages/form";
+import { PreviewPage } from "@/pages/preview";
+import { SchemaPage } from "@/pages/schema";
 
 const routes = [
   {
-    component: BuildPage,
+    component: FormPage,
     path: "/",
+    children: [
+      {
+        component: BuilderPage,
+        path: "builder",
+      },
+      {
+        component: PreviewPage,
+        path: "preview",
+      },
+      {
+        component: SchemaPage,
+        path: "schema",
+      },
+    ],
   },
   {
     path: "/:pathMatch(.*)*",
@@ -14,6 +31,6 @@ const routes = [
 ];
 
 export const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes,
 });
