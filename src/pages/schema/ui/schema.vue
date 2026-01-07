@@ -28,6 +28,7 @@ const schema = computed(() =>
   <div :class="$style.root">
     <div :class="$style.actions">
       <Button
+        :class="$style.button"
         color="neutral"
         @click="clipboard.copy(schema)"
       >
@@ -37,7 +38,10 @@ const schema = computed(() =>
         />
         Copy
       </Button>
-      <Button @click="downloadFile('schema', schema)">
+      <Button
+        :class="$style.button"
+        @click="downloadFile('schema', schema)"
+      >
         <Icon
           name="download"
           size="s"
@@ -45,7 +49,7 @@ const schema = computed(() =>
         Download
       </Button>
     </div>
-    <Card>
+    <Card :class="$style.card">
       <pre>{{ schema }}</pre>
     </Card>
   </div>
@@ -60,7 +64,18 @@ const schema = computed(() =>
 
 .actions {
   display: flex;
-  justify-content: flex-end;
-  gap: var(--gap-container);
+  flex-wrap: wrap;
+  gap: var(--gap-control);
+}
+
+.button {
+  @media screen and (max-width: 479px) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.card {
+  overflow-x: auto;
 }
 </style>

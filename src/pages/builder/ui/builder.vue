@@ -24,7 +24,7 @@ const formStore = useFormStore();
   display: flex;
   gap: var(--gap-container);
 
-  @media screen and (max-width: 769px) {
+  @media screen and (max-width: 767px) {
     flex-direction: column;
   }
 }

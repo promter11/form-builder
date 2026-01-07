@@ -44,7 +44,7 @@ const handleTab = (value: string) => {
 
 <template>
   <div :class="$style.root">
-    <div>
+    <div :class="$style.container">
       <Tabs
         :items="tabItems"
         :value="tab"
@@ -61,5 +61,11 @@ const handleTab = (value: string) => {
   display: flex;
   flex-direction: column;
   gap: var(--gap-container);
+}
+
+.container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
 }
 </style>

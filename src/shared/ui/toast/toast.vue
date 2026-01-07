@@ -59,6 +59,7 @@ onBeforeUnmount(() => clearTimeout(timeout));
         @click="onClose"
       >
         <Icon
+          is-spaced
           name="close"
           size="s"
         />
@@ -77,7 +78,7 @@ onBeforeUnmount(() => clearTimeout(timeout));
   align-items: center;
   gap: var(--gap-toast);
   max-width: var(--size-toast);
-  width: 100%;
+  width: calc(100% - var(--padding-toast) * 2);
   padding: var(--padding-surface);
   border-radius: var(--radius-surface);
   box-shadow: var(--shadow-surface);

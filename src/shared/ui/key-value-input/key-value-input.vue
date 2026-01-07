@@ -47,6 +47,10 @@ const onRemove = (index: number) => emit("remove", index);
       color="primary"
       @click="onAdd"
     >
+      <Icon
+        name="plus"
+        size="s"
+      />
       Add pair
     </Button>
   </div>

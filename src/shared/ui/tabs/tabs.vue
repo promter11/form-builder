@@ -31,11 +31,11 @@ const styles = computed(() => {
 const onChange = (value: string) => emit("change", value);
 
 const changeItem = (value: string) => {
-  setIndicator(value);
+  setActiveTabRect(value);
   onChange(value);
 };
 
-const setIndicator = (value: string) => {
+const setActiveTabRect = (value: string) => {
   const tabRef = tabRefs.value.get(value);
   if (!tabRef) {
     return;
@@ -88,11 +88,13 @@ onMounted(() => changeItem(props.value));
   align-items: center;
   height: var(--size-tab);
   padding: var(--padding-tab);
+  white-space: nowrap;
   border-bottom: var(--size-tabs-underline) solid transparent;
   border-top-left-radius: var(--radius-tab);
   border-top-right-radius: var(--radius-tab);
   transition: background-color var(--transition-time);
   background: transparent;
+  -webkit-tap-highlight-color: transparent;
 
   &:disabled {
     opacity: var(--opacity-item-disabled);
@@ -100,6 +102,10 @@ onMounted(() => changeItem(props.value));
 
   &:hover {
     background: var(--color-neutral-hover);
+  }
+
+  &:focus-visible {
+    outline-color: var(--color-control-outline);
   }
 }
 
