@@ -1,11 +1,10 @@
 import "@/app/styles/index.css";
 
 import { nanoid } from "nanoid";
-import { createPinia } from "pinia";
 import { createApp, ref } from "vue";
 
 import { App } from "@/app";
-import { router } from "@/app/routes";
+import { router, store } from "@/app/providers";
 import { clickOutsideDirective } from "@/shared/directives";
 import { toastKey } from "@/shared/ui";
 import type { ToastProps } from "@/shared/ui";
@@ -32,7 +31,7 @@ app.provide(toastKey, {
   data: toast,
 });
 
-app.use(createPinia());
+app.use(store);
 app.use(router);
 
 app.mount("#app");

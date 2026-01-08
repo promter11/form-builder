@@ -1,1 +1,2 @@
-export * from "./ui";
+import SchemaPage from "./ui/schema.vue";
+export default SchemaPage;

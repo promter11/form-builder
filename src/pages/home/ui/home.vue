@@ -4,31 +4,32 @@ import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 
 import { useFormStore } from "@/features/form";
-import { Divider, type Tab } from "@/shared/ui";
-import { Tabs } from "@/shared/ui";
+import { routeNames } from "@/shared/config";
+import type { Tab } from "@/shared/ui";
+import { Divider, Tabs } from "@/shared/ui";
 
 const router = useRouter();
 const formStore = useFormStore();
 
-const tab = ref("builder");
+const tab = ref<string>(routeNames.builder);
 
 const tabItems = computed<Tab[]>(() => [
   {
     id: nanoid(),
     label: "Builder",
-    value: "builder",
+    value: routeNames.builder,
   },
   {
     id: nanoid(),
     isDisabled: formStore.fields.length === 0,
     label: "Preview",
-    value: "preview",
+    value: routeNames.preview,
   },
   {
     id: nanoid(),
     isDisabled: formStore.fields.length === 0,
     label: "JSON Schema",
-    value: "schema",
+    value: routeNames.schema,
   },
 ]);
 
@@ -38,7 +39,7 @@ const changeTab = (value: string) => {
 
 const handleTab = (value: string) => {
   changeTab(value);
-  router.push({ path: tab.value });
+  router.push({ name: tab.value });
 };
 </script>
 
