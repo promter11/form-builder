@@ -30,21 +30,21 @@ const onRemove = (index: number) => emit("remove", index);
         :value="item.value"
         @input="(value) => onChange(index, { value })"
       />
-      <button
+      <Button
         v-if="items.length > 1"
-        :class="$style.button"
-        type="button"
+        :class="$style.removeButton"
+        color="neutral"
+        variant="plain"
         @click="onRemove(index)"
       >
         <Icon
           name="trash"
           size="xs"
         />
-      </button>
+      </Button>
     </div>
     <Button
-      :class="$style.button"
-      color="primary"
+      :class="$style.addButton"
       @click="onAdd"
     >
       <Icon
@@ -70,7 +70,11 @@ const onRemove = (index: number) => emit("remove", index);
   gap: var(--gap-control);
 }
 
-.button {
+.removeButton {
+  flex-shrink: 0;
+}
+
+.addButton {
   display: inline-flex;
   width: fit-content;
 }

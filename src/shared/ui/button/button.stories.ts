@@ -19,7 +19,7 @@ const meta = {
       control: {
         type: "select",
       },
-      options: ["bordered", "solid"],
+      options: ["bordered", "plain", "solid"],
     },
   },
   component: Button,

@@ -3,7 +3,7 @@ import { toRef } from "vue";
 
 import type { Field } from "@/entities/field";
 import { useFormStore, useDragReorder } from "@/features/form";
-import { Card, Divider, Icon, Typography } from "@/shared/ui";
+import { Button, Card, Divider, Icon, Typography } from "@/shared/ui";
 
 const formStore = useFormStore();
 
@@ -27,10 +27,11 @@ const handleRemove = (field: Field) => {
     @drop="dragReorder.drop(index)"
   >
     <div :class="$style.container">
-      <button
+      <Button
         :class="$style.dragButton"
+        color="neutral"
         draggable="true"
-        type="button"
+        variant="plain"
         @dragend="dragReorder.reset"
         @dragstart="dragReorder.start(index)"
       >
@@ -38,7 +39,7 @@ const handleRemove = (field: Field) => {
           name="dots-vertical"
           size="xs"
         />
-      </button>
+      </Button>
       <Typography :class="$style.label">{{ field.label }}</Typography>
     </div>
     <div :class="$style.actions">
@@ -53,26 +54,26 @@ const handleRemove = (field: Field) => {
         />
         <Divider direction="vertical" />
       </div>
-      <button
-        :class="$style.editButton"
-        type="button"
+      <Button
+        color="neutral"
+        variant="plain"
         @click="formStore.changeActiveFieldId(formStore.activeFieldId === field.id ? '' : field.id)"
       >
         <Icon
           name="edit"
           size="xs"
         />
-      </button>
-      <button
-        :class="$style.removeButton"
-        type="button"
+      </Button>
+      <Button
+        color="neutral"
+        variant="plain"
         @click="handleRemove(field)"
       >
         <Icon
           name="trash"
           size="xs"
         />
-      </button>
+      </Button>
     </div>
   </Card>
 </template>
@@ -125,12 +126,6 @@ const handleRemove = (field: Field) => {
   gap: var(--gap-list-actions);
   flex-grow: 1;
   height: 100%;
-}
-
-.dragButton,
-.editButton,
-.removeButton {
-  display: inline-flex;
 }
 
 .dragButton {

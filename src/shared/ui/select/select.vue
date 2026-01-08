@@ -164,12 +164,12 @@ const handleClickOutside = () => changeExpanded(false);
   transition: background-color var(--transition-time);
   user-select: none;
 
-  &:hover {
-    background: var(--color-neutral-hover);
-  }
-
   &:not(:last-child) {
     border-bottom: var(--size-control-border) solid var(--color-control-border);
+  }
+
+  &:hover:not(:disabled) {
+    background: var(--color-neutral-hover);
   }
 }
 

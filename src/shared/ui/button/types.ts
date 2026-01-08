@@ -4,4 +4,4 @@ export type ButtonProps = {
   isDisabled?: boolean;
   variant?: ButtonVariant;
 };
-export type ButtonVariant = "bordered" | "solid";
+export type ButtonVariant = "bordered" | "plain" | "solid";

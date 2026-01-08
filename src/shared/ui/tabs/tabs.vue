@@ -92,20 +92,22 @@ onMounted(() => changeItem(props.value));
   border-bottom: var(--size-tabs-underline) solid transparent;
   border-top-left-radius: var(--radius-tab);
   border-top-right-radius: var(--radius-tab);
-  transition: background-color var(--transition-time);
-  background: transparent;
+  outline-color: var(--color-control-outline);
+  transition:
+    outline-color var(--transition-time),
+    background-color var(--transition-time);
+  user-select: none;
   -webkit-tap-highlight-color: transparent;
+  background: transparent;
+  color: var(--color-neutral-fg);
 
   &:disabled {
     opacity: var(--opacity-item-disabled);
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: var(--color-neutral-hover);
-  }
-
-  &:focus-visible {
-    outline-color: var(--color-control-outline);
+    color: var(--color-neutral-fg-hover);
   }
 }
 

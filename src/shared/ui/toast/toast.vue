@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, watch } from "vue";
 
-import { Icon, Typography } from "../";
+import { Button, Icon, Typography } from "../";
 
 import type { ToastEmits, ToastProps, ToastVariant } from "./types";
 
@@ -53,17 +53,16 @@ onBeforeUnmount(() => clearTimeout(timeout));
         />
         <Typography variant="subtitle">{{ title }}</Typography>
       </div>
-      <button
-        :class="$style.button"
-        type="button"
+      <Button
+        color="neutral"
+        variant="plain"
         @click="onClose"
       >
         <Icon
-          is-spaced
           name="close"
           size="s"
         />
-      </button>
+      </Button>
     </div>
   </Transition>
 </template>
@@ -104,10 +103,6 @@ onBeforeUnmount(() => clearTimeout(timeout));
   display: flex;
   align-items: center;
   gap: var(--gap-toast);
-}
-
-.button {
-  display: inline-flex;
 }
 
 .variant-danger {

@@ -1,52 +1,37 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
 import { Typography } from "../";
+import { useRipple } from "../../composables";
 
 import type { ButtonProps } from "./types";
 
-withDefaults(defineProps<ButtonProps>(), {
+const props = withDefaults(defineProps<ButtonProps>(), {
   color: "primary",
   isDisabled: false,
   variant: "solid",
 });
 
-const buttonRef = ref<HTMLElement>();
-const rippleRef = ref<HTMLElement>();
+const ripple = useRipple();
 
-const handleClick = (event: MouseEvent) => {
-  const ripple = rippleRef.value;
-  const button = buttonRef.value;
-
-  if (!ripple || !button) {
+const click = (event: MouseEvent) => {
+  if (props.variant === "plain") {
     return;
   }
 
-  const buttonRect = button.getBoundingClientRect();
-  const buttonSize = Math.max(buttonRect.width, buttonRect.height);
-
-  ripple.style.width = `${buttonSize}px`;
-  ripple.style.height = `${buttonSize}px`;
-  ripple.style.left = `${event.clientX - buttonRect.left - buttonSize / 2}px`;
-  ripple.style.top = `${event.clientY - buttonRect.top - buttonSize / 2}px`;
-
-  ripple.style.animation = "none";
-  requestAnimationFrame(() => {
-    ripple.style.animation = "";
-  });
+  ripple.trigger(event);
 };
 </script>
 
 <template>
   <button
-    ref="buttonRef"
+    :ref="ripple.hostRef"
     :class="[$style.root, $style[`${variant}-${color}`]]"
     :disabled="isDisabled"
     type="button"
-    @click="handleClick"
+    @click="click"
   >
     <span
-      ref="rippleRef"
+      v-if="variant !== 'plain'"
+      :ref="ripple.rippleRef"
       :class="$style.ripple"
     />
     <Typography
@@ -64,8 +49,8 @@ const handleClick = (event: MouseEvent) => {
   display: inline-flex;
   align-items: center;
   gap: var(--gap-control);
-  height: var(--size-control);
-  padding: var(--padding-control);
+  height: var(--height);
+  padding: var(--padding);
   border: var(--size-control-border) solid var(--border-color);
   border-radius: var(--radius-control);
   transition:
@@ -89,7 +74,7 @@ const handleClick = (event: MouseEvent) => {
     opacity: var(--opacity-item-disabled);
   }
 
-  &:focus-visible {
+  &:focus-visible:not(:disabled) {
     outline: var(--size-control-outline) solid var(--color-control-outline);
     outline-offset: var(--size-control-outline);
   }
@@ -118,6 +103,8 @@ const handleClick = (event: MouseEvent) => {
 }
 
 .bordered-neutral {
+  --height: var(--size-control);
+  --padding: var(--padding-control);
   --border-color: var(--color-neutral);
   --background: transparent;
   --background-hover: transparent;
@@ -126,6 +113,8 @@ const handleClick = (event: MouseEvent) => {
 }
 
 .bordered-primary {
+  --height: var(--size-control);
+  --padding: var(--padding-control);
   --border-color: var(--color-primary);
   --background: transparent;
   --background-hover: transparent;
@@ -133,7 +122,29 @@ const handleClick = (event: MouseEvent) => {
   --color-hover: var(--color-primary-fg-hover);
 }
 
+.plain-neutral {
+  --height: inherit;
+  --padding: 0;
+  --border-color: transparent;
+  --background: transparent;
+  --background-hover: transparent;
+  --color: var(--color-neutral-fg);
+  --color-hover: var(--color-neutral-fg-hover);
+}
+
+.plain-primary {
+  --height: inherit;
+  --padding: 0;
+  --border-color: transparent;
+  --background: transparent;
+  --background-hover: transparent;
+  --color: var(--color-primary);
+  --color-hover: var(--color-primary-hover);
+}
+
 .solid-neutral {
+  --height: var(--size-control);
+  --padding: var(--padding-control);
   --border-color: transparent;
   --background: var(--color-neutral);
   --background-hover: var(--color-neutral-hover);
@@ -142,6 +153,8 @@ const handleClick = (event: MouseEvent) => {
 }
 
 .solid-primary {
+  --height: var(--size-control);
+  --padding: var(--padding-control);
   --border-color: transparent;
   --background: var(--color-primary);
   --background-hover: var(--color-primary-hover);
