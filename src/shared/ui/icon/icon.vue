@@ -3,6 +3,7 @@ import { defineAsyncComponent, defineComponent, h } from "vue";
 
 import { Skeleton } from "../skeleton";
 
+import { cache } from "./cache";
 import type { IconProps } from "./types";
 
 const props = withDefaults(defineProps<IconProps>(), {
@@ -11,13 +12,21 @@ const props = withDefaults(defineProps<IconProps>(), {
 });
 
 const fetchIcon = async (name: string) => {
-  const response = await fetch(`/static/icons/${name.toLowerCase()}.svg`);
+  const key = name.toLowerCase();
 
-  if (!response.ok) {
-    throw new Error(`Unable to fetch icon: ${name}`);
+  if (cache.has(key)) {
+    return cache.get(key) ?? "";
   }
 
-  return await response.text();
+  const response = await fetch(`/static/icons/${key.toLowerCase()}.svg`);
+
+  if (!response.ok) {
+    throw new Error(`Unable to fetch icon: ${key}`);
+  }
+
+  const content = await response.text();
+  cache.set(key, content);
+  return content;
 };
 
 const getSvgElement = (content: string) => {
