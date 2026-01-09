@@ -5,8 +5,9 @@ import { useRouter } from "vue-router";
 
 import { useFormStore } from "@/features/form";
 import { routeNames } from "@/shared/config";
-import type { Tab } from "@/shared/ui";
-import { Divider, Tabs } from "@/shared/ui";
+import { Divider } from "@/shared/ui/divider";
+import type { Tab } from "@/shared/ui/tabs";
+import { Tabs } from "@/shared/ui/tabs";
 
 const router = useRouter();
 const formStore = useFormStore();

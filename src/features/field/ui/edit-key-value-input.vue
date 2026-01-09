@@ -2,8 +2,8 @@
 import { nanoid } from "nanoid";
 
 import type { Field, Setting } from "@/entities/field";
-import { FieldSetting } from "@/features/form";
-import { KeyValueInput } from "@/shared/ui";
+import { EditField } from "@/features/field";
+import { KeyValueInput } from "@/shared/ui/key-value-input";
 
 type Emits = {
   update: [payload: Partial<Field>];
@@ -22,7 +22,7 @@ const onUpdate = (payload: Partial<Field>) => emit("update", payload);
 </script>
 
 <template>
-  <FieldSetting>
+  <EditField>
     <template #default>
       <KeyValueInput
         :items="(field as any)[setting.id]"
@@ -59,5 +59,5 @@ const onUpdate = (payload: Partial<Field>) => emit("update", payload);
     <template #label>
       {{ setting.label }}
     </template>
-  </FieldSetting>
+  </EditField>
 </template>

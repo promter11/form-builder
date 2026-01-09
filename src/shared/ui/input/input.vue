@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useId } from "vue";
 
-import { Typography } from "../";
+import { Typography } from "../typography";
 
 import type { InputEmits, InputProps } from "./types";
 

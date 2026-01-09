@@ -2,7 +2,7 @@
 import type { ComponentPublicInstance } from "vue";
 import { computed, onMounted, ref, shallowRef } from "vue";
 
-import { Typography } from "../";
+import { Typography } from "../typography";
 
 import type { TabsEmits, TabsProps } from "./types";
 

@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { presets } from "@/entities/field";
-import { AddField } from "@/features/form";
-import { Card, Typography } from "@/shared/ui";
+import { AddField } from "@/features/field";
+import { Card } from "@/shared/ui/card";
+import { Typography } from "@/shared/ui/typography";
 </script>
 
 <template>
   <Card :class="$style.root">
-    <Typography variant="subtitle">Add field</Typography>
+    <Typography variant="subtitle">Field presets</Typography>
     <div :class="$style.container">
       <AddField
         v-for="preset of presets"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Typography } from "@/shared/ui";
+import { Typography } from "@/shared/ui/typography";
 </script>
 
 <template>

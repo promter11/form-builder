@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { Input } from "../";
+import { Input } from "../input";
 
 import type { NumberInputProps, NumberInputEmits } from "./types";
 

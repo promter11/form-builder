@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineAsyncComponent, defineComponent, h } from "vue";
 
-import { Skeleton } from "../";
+import { Skeleton } from "../skeleton";
 
 import type { IconProps } from "./types";
 

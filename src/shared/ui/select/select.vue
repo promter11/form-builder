@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
 
-import { Icon, Typography } from "../";
+import { Icon } from "../icon";
+import { Typography } from "../typography";
 
 import type { SelectEmits, SelectProps } from "./types";
 

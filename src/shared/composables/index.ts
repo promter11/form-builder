@@ -1,2 +1,2 @@
-export * from "./use-clipboard";
-export * from "./use-ripple";
+export * from "./effects";
+export * from "./navigator";

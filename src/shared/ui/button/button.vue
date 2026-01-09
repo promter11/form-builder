@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Typography } from "../";
 import { useRipple } from "../../composables";
+import { Typography } from "../typography";
 
 import type { ButtonProps } from "./types";
 

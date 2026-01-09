@@ -4,7 +4,8 @@ import { nanoid } from "nanoid";
 import type { FieldPreset } from "@/entities/field";
 import { fields } from "@/entities/field";
 import { useFormStore } from "@/features/form";
-import { Button, useToast } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { useToast } from "@/shared/ui/toast";
 
 type Props = {
   preset: FieldPreset;

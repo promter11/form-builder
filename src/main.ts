@@ -3,11 +3,10 @@ import "@/app/styles/index.css";
 import { nanoid } from "nanoid";
 import { createApp, ref } from "vue";
 
-import { App } from "@/app";
-import { router, store } from "@/app/providers";
+import { App, router, store } from "@/app";
 import { clickOutsideDirective } from "@/shared/directives";
-import { toastKey } from "@/shared/ui";
-import type { ToastProps } from "@/shared/ui";
+import type { ToastProps } from "@/shared/ui/toast";
+import { toastKey } from "@/shared/ui/toast";
 
 const app = createApp(App);
 

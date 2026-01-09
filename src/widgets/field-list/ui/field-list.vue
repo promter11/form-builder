@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { FieldItem } from "@/features/form";
-import { Card, Typography } from "@/shared/ui";
+import { ManageField } from "@/features/field";
+import { Card } from "@/shared/ui/card";
+import { Typography } from "@/shared/ui/typography";
 </script>
 
 <template>
   <Card :class="$style.root">
     <Typography variant="subtitle">Field list</Typography>
-    <FieldItem />
+    <ManageField />
   </Card>
 </template>
 

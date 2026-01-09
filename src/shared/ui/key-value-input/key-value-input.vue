@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Button, Icon, Input } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Icon } from "@/shared/ui/icon";
+import { Input } from "@/shared/ui/input";
 
 import type { KeyValueInputEmits, KeyValueInputItem, KeyValueInputProps } from "./types";
 

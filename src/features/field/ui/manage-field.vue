@@ -2,12 +2,16 @@
 import { toRef } from "vue";
 
 import type { Field } from "@/entities/field";
-import { useFormStore, useDragReorder } from "@/features/form";
-import { Button, Card, Divider, Icon, Typography } from "@/shared/ui";
-
-const formStore = useFormStore();
+import { useDragReorder } from "@/features/field";
+import { useFormStore } from "@/features/form";
+import { Button } from "@/shared/ui/button";
+import { Card } from "@/shared/ui/card";
+import { Divider } from "@/shared/ui/divider";
+import { Icon } from "@/shared/ui/icon";
+import { Typography } from "@/shared/ui/typography";
 
 const dragReorder = useDragReorder(toRef(() => formStore.fields));
+const formStore = useFormStore();
 
 const handleRemove = (field: Field) => {
   if (formStore.activeFieldId === field.id) {

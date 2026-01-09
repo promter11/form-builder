@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Typography } from "../";
+import { Typography } from "../typography";
 
 import type { SwitchEmits, SwitchProps } from "./types";
 

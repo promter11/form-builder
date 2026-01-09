@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Icon, Typography } from "../";
+import { Icon } from "../icon";
+import { Typography } from "../typography";
 
 import type { CheckboxEmits, CheckboxProps } from "./types";
 

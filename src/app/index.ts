@@ -1,1 +1,2 @@
-export { default as App } from "./index.vue";
+export { default as App } from "./app.vue";
+export * from "./providers";

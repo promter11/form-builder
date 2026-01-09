@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Field, Setting } from "@/entities/field";
-import { FieldSetting } from "@/features/form";
-import { Input } from "@/shared/ui";
+import { EditField } from "@/features/field";
+import { Checkbox } from "@/shared/ui/checkbox";
 
 type Emits = {
   update: [payload: Partial<Field>];
@@ -20,15 +20,17 @@ const onUpdate = (payload: Partial<Field>) => emit("update", payload);
 </script>
 
 <template>
-  <FieldSetting>
+  <EditField>
     <template #default>
-      <Input
-        :value="(field as any)[setting.id]"
-        @input="(value) => onUpdate({ [setting.id]: value })"
-      />
+      <Checkbox
+        :is-checked="(field as any)[setting.id]"
+        @change="(value) => onUpdate({ [setting.id]: value })"
+      >
+        {{ setting.label }}
+      </Checkbox>
     </template>
     <template #label>
       {{ setting.label }}
     </template>
-  </FieldSetting>
+  </EditField>
 </template>

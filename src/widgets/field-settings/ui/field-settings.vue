@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { Field } from "@/entities/field";
 import { settings } from "@/entities/field";
-import { CheckboxSetting, KeyValueInputSetting, TextSetting } from "@/features/form";
-import { Card, Typography } from "@/shared/ui";
+import { EditCheckbox, EditKeyValueInput, EditTextInput } from "@/features/field";
+import { Card } from "@/shared/ui/card";
+import { Typography } from "@/shared/ui/typography";
 
 type Emits = {
   update: [payload: Partial<Field>];
@@ -17,9 +18,9 @@ const emit = defineEmits<Emits>();
 defineProps<Props>();
 
 const components = {
-  checkbox: CheckboxSetting,
-  keyValueInput: KeyValueInputSetting,
-  text: TextSetting,
+  checkbox: EditCheckbox,
+  keyValueInput: EditKeyValueInput,
+  text: EditTextInput,
 } as const;
 
 const onUpdate = (payload: Partial<Field>) => emit("update", payload);

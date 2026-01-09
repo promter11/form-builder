@@ -1,4 +1,4 @@
-import type { KeyValueInputItem } from "@/shared/ui";
+import type { KeyValueInputItem } from "@/shared/ui/key-value-input";
 
 export type Field = CheckboxField | SelectField | SwitchField | TextField;
 

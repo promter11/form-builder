@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useFormStore } from "@/features/form";
-import { AddFieldPanel, FieldList, FieldSettings } from "@/widgets/form";
+import { FieldList } from "@/widgets/field-list";
+import { FieldPresets } from "@/widgets/field-presets";
+import { FieldSettings } from "@/widgets/field-settings";
 
 const formStore = useFormStore();
 </script>
@@ -8,7 +10,7 @@ const formStore = useFormStore();
 <template>
   <div :class="$style.root">
     <div :class="$style.container">
-      <AddFieldPanel />
+      <FieldPresets />
       <FieldList v-if="formStore.fields.length > 0" />
     </div>
     <FieldSettings

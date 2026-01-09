@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { onBeforeUnmount, watch } from "vue";
 
-import { Button, Icon, Typography } from "../";
+import { Button } from "../button";
+import { Icon } from "../icon";
+import { Typography } from "../typography";
 
 import type { ToastEmits, ToastProps, ToastVariant } from "./types";
 
@@ -79,6 +81,7 @@ onBeforeUnmount(() => clearTimeout(timeout));
   max-width: var(--size-toast);
   width: calc(100% - var(--padding-toast) * 2);
   padding: var(--padding-surface);
+  border: var(--size-surface-border) solid var(--color-surface-border);
   border-radius: var(--radius-surface);
   box-shadow: var(--shadow-surface);
   user-select: none;

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Container, Divider, Toast, useToast } from "@/shared/ui";
+import { Container } from "@/shared/ui/container";
+import { Divider } from "@/shared/ui/divider";
+import { Toast, useToast } from "@/shared/ui/toast";
 import { Header } from "@/widgets/header";
 
 const toast = useToast();
