@@ -24,7 +24,12 @@ const onUpdate = (payload: Partial<Field>) => emit("update", payload);
     <template #default>
       <Checkbox
         :is-checked="(field as any)[setting.id]"
-        @change="(value) => onUpdate({ [setting.id]: value })"
+        @change="
+          (value) =>
+            onUpdate({
+              [setting.id]: value,
+            })
+        "
       >
         {{ setting.label }}
       </Checkbox>

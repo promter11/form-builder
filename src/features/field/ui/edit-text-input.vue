@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Field, Setting } from "@/entities/field";
 import { EditField } from "@/features/field";
+import { debounce } from "@/shared/lib";
 import { Input } from "@/shared/ui/input";
 
 type Emits = {
@@ -17,6 +18,8 @@ const emit = defineEmits<Emits>();
 defineProps<Props>();
 
 const onUpdate = (payload: Partial<Field>) => emit("update", payload);
+
+const updateValue = debounce(onUpdate, 250);
 </script>
 
 <template>
@@ -24,7 +27,12 @@ const onUpdate = (payload: Partial<Field>) => emit("update", payload);
     <template #default>
       <Input
         :value="(field as any)[setting.id]"
-        @input="(value) => onUpdate({ [setting.id]: value })"
+        @input="
+          (value) =>
+            updateValue({
+              [setting.id]: value,
+            })
+        "
       />
     </template>
     <template #label>

@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 
 import type { Field, Setting } from "@/entities/field";
 import { EditField } from "@/features/field";
+import { debounce } from "@/shared/lib";
 import { KeyValueInput } from "@/shared/ui/key-value-input";
 
 type Emits = {
@@ -19,6 +20,8 @@ const emit = defineEmits<Emits>();
 defineProps<Props>();
 
 const onUpdate = (payload: Partial<Field>) => emit("update", payload);
+
+const updateValue = debounce(onUpdate, 250);
 </script>
 
 <template>
@@ -40,7 +43,7 @@ const onUpdate = (payload: Partial<Field>) => emit("update", payload);
         "
         @change="
           (index, payload) =>
-            onUpdate({
+            updateValue({
               items: [
                 ...(field as any)[setting.id].slice(0, index),
                 { ...(field as any)[setting.id][index], ...payload },
