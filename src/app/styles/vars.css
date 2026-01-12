@@ -36,15 +36,13 @@
   --opacity-item-disabled: 0.5;
 
   /* Spacing */
-  --gap-card: 8px;
   --gap-checkbox: 8px;
-  --gap-chip: 4px;
   --gap-container: 16px;
   --gap-control: 8px;
   --gap-list-actions: 8px;
   --gap-list-item: 12px;
+  --gap-surface: 8px;
   --gap-toast: 8px;
-  --padding-chip: 8px 16px;
   --padding-container: 16px;
   --padding-control: 12px 16px;
   --padding-icon-xs: 2px;
@@ -97,7 +95,6 @@
 
   /* Radius */
   --radius-checkbox: 8px;
-  --radius-chip: 20px;
   --radius-control: 12px;
   --radius-surface: 12px;
   --radius-switch: 24px;

@@ -22,13 +22,13 @@ import { Typography } from "@/shared/ui/typography";
 .root {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-card);
+  gap: var(--gap-surface);
 }
 
 .container {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--gap-card);
+  gap: var(--gap-surface);
 }
 </style>

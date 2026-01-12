@@ -57,7 +57,7 @@ const onUpdate = (index: number, payload: Partial<UnionSetting>) => emit("update
   display: flex;
   flex-basis: 100%;
   flex-direction: column;
-  gap: var(--gap-card);
+  gap: var(--gap-surface);
   height: max-content;
 }
 </style>

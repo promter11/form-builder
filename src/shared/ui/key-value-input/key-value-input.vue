@@ -63,7 +63,7 @@ const onRemove = (index: number) => emit("remove", index);
   display: flex;
   flex-basis: 100%;
   flex-direction: column;
-  gap: var(--gap-card);
+  gap: var(--gap-control);
 }
 
 .container {
