@@ -1,23 +1,22 @@
 <script setup lang="ts">
-import type { Field, Setting } from "@/entities/field";
+import type { TextSetting } from "@/entities/field";
 import { EditField } from "@/features/field";
 import { debounce } from "@/shared/lib";
 import { Input } from "@/shared/ui/input";
 
 type Emits = {
-  update: [payload: Partial<Field>];
+  update: [payload: Partial<TextSetting>];
 };
 
 type Props = {
-  field: Field;
-  setting: Setting;
+  setting: TextSetting;
 };
 
 const emit = defineEmits<Emits>();
 
 defineProps<Props>();
 
-const onUpdate = (payload: Partial<Field>) => emit("update", payload);
+const onUpdate = (payload: Partial<TextSetting>) => emit("update", payload);
 
 const updateValue = debounce(onUpdate, 250);
 </script>
@@ -26,13 +25,8 @@ const updateValue = debounce(onUpdate, 250);
   <EditField>
     <template #default>
       <Input
-        :value="(field as any)[setting.id]"
-        @input="
-          (value) =>
-            updateValue({
-              [setting.id]: value,
-            })
-        "
+        :value="setting.value"
+        @input="(value) => updateValue({ value })"
       />
     </template>
     <template #label>

@@ -13,6 +13,11 @@ import { Typography } from "@/shared/ui/typography";
 const dragReorder = useDragReorder(toRef(() => formStore.fields));
 const formStore = useFormStore();
 
+const getLabel = (field: Field) => {
+  const setting = field.settings.find((setting) => setting.id === "label");
+  return setting?.value ?? "Field";
+};
+
 const handleRemove = (field: Field) => {
   if (formStore.activeFieldId === field.id) {
     formStore.changeActiveFieldId("");
@@ -44,7 +49,7 @@ const handleRemove = (field: Field) => {
           size="xs"
         />
       </Button>
-      <Typography :class="$style.label">{{ field.label }}</Typography>
+      <Typography :class="$style.label">{{ getLabel(field) }}</Typography>
     </div>
     <div :class="$style.actions">
       <div

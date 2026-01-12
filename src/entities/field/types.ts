@@ -1,6 +1,10 @@
 import type { KeyValueInputItem } from "@/shared/ui/key-value-input";
 
-export type Field = CheckboxField | SelectField | SwitchField | TextField;
+export type Field = {
+  id: string;
+  settings: UnionSetting[];
+  value: string;
+};
 
 export type FieldPreset = {
   id: string;
@@ -10,55 +14,27 @@ export type FieldPreset = {
 
 export type FieldType = "checkbox" | "number" | "select" | "switch" | "text";
 
-export type BaseField = {
+export type UnionField = Record<FieldType, Field>;
+
+export type BaseSetting = {
   id: string;
-  type: FieldType;
+  label: string;
 };
 
-export type CheckboxField = {
-  checked: boolean;
-  disabled: boolean;
-  label: string;
-  name: string;
-  value: string;
-} & BaseField;
+export type CheckboxSetting = {
+  control: "checkbox";
+  value: boolean;
+} & BaseSetting;
 
-export type SelectField = {
-  disabled: boolean;
+export type KeyValueInputSetting = {
+  control: "keyValueInput";
   items: KeyValueInputItem[];
-  label: string;
-  placeholder: string;
   value: string;
-} & BaseField;
+} & BaseSetting;
 
-export type SwitchField = {
-  checked: boolean;
-  disabled: boolean;
-  label: string;
+export type TextSetting = {
+  control: "text";
   value: string;
-} & BaseField;
+} & BaseSetting;
 
-export type TextField = {
-  disabled: boolean;
-  label: string;
-  placeholder: string;
-  value: string;
-} & BaseField;
-
-export type UnionField = {
-  checkbox: CheckboxField;
-  number: TextField;
-  select: SelectField;
-  switch: SwitchField;
-  text: TextField;
-};
-
-export type Setting = {
-  control: SettingControl;
-  id: string;
-  label: string;
-};
-
-export type SettingControl = "checkbox" | "keyValueInput" | "text";
-
-export type SettingDefinition = Record<string, Setting>;
+export type UnionSetting = CheckboxSetting | KeyValueInputSetting | TextSetting;

@@ -1,47 +1,55 @@
-import type { SettingDefinition } from "../../types";
+import { nanoid } from "nanoid";
 
-const definitions = {
+import type { UnionSetting } from "../../types";
+
+export const definitions = {
   checked: {
     control: "checkbox",
     id: "checked",
     label: "Checked",
+    value: false,
   },
   disabled: {
     control: "checkbox",
     id: "disabled",
     label: "Disabled",
+    value: false,
   },
   items: {
     control: "keyValueInput",
     id: "items",
+    items: [
+      {
+        id: nanoid(),
+        key: "",
+        value: "",
+      },
+    ],
     label: "Items",
+    value: "",
   },
   label: {
     control: "text",
     id: "label",
     label: "Label",
+    value: "",
   },
   placeholder: {
     control: "text",
     id: "placeholder",
     label: "Placeholder",
+    value: "",
   },
   name: {
     control: "text",
     id: "name",
     label: "Name",
+    value: "",
   },
   value: {
     control: "text",
     id: "value",
     label: "Value",
+    value: "",
   },
-} as const satisfies SettingDefinition;
-
-export const settings = {
-  checkbox: [definitions.label, definitions.name, definitions.value, definitions.checked, definitions.disabled],
-  number: [definitions.label, definitions.placeholder, definitions.value, definitions.disabled],
-  select: [definitions.label, definitions.placeholder, definitions.items, definitions.value, definitions.disabled],
-  switch: [definitions.label, definitions.value, definitions.checked, definitions.disabled],
-  text: [definitions.label, definitions.placeholder, definitions.value, definitions.disabled],
-} as const;
+} as const satisfies Record<string, UnionSetting>;

@@ -1,42 +1,54 @@
 <script setup lang="ts">
-import type { Field } from "@/entities/field";
-import { settings } from "@/entities/field";
+import { computed } from "vue";
+
+import type { UnionSetting } from "@/entities/field";
 import { EditCheckbox, EditKeyValueInput, EditTextInput } from "@/features/field";
 import { Card } from "@/shared/ui/card";
 import { Typography } from "@/shared/ui/typography";
 
 type Emits = {
-  update: [payload: Partial<Field>];
+  update: [index: number, payload: Partial<UnionSetting>];
 };
 
 type Props = {
-  field: Field;
+  settings: UnionSetting[];
 };
 
 const emit = defineEmits<Emits>();
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
-const components = {
-  checkbox: EditCheckbox,
-  keyValueInput: EditKeyValueInput,
-  text: EditTextInput,
-} as const;
+const label = computed(() => props.settings.find((setting) => setting.id === "label"));
 
-const onUpdate = (payload: Partial<Field>) => emit("update", payload);
+const onUpdate = (index: number, payload: Partial<UnionSetting>) => emit("update", index, payload);
 </script>
 
 <template>
   <Card :class="$style.root">
-    <Typography variant="subtitle">Field settings — {{ field.label }}</Typography>
-    <component
-      :is="components[setting.control]"
-      v-for="setting of settings[field.type]"
+    <Typography variant="subtitle">
+      Field settings
+      <span v-if="label">— {{ label.value }}</span>
+    </Typography>
+    <template
+      v-for="(setting, index) of settings"
       :key="setting.id"
-      :field="field"
-      :setting="setting"
-      @update="onUpdate"
-    />
+    >
+      <EditCheckbox
+        v-if="setting.control === 'checkbox'"
+        :setting="setting"
+        @update="(payload) => onUpdate(index, payload)"
+      />
+      <EditKeyValueInput
+        v-else-if="setting.control === 'keyValueInput'"
+        :setting="setting"
+        @update="(payload) => onUpdate(index, payload)"
+      />
+      <EditTextInput
+        v-else-if="setting.control === 'text'"
+        :setting="setting"
+        @update="(payload) => onUpdate(index, payload)"
+      />
+    </template>
   </Card>
 </template>
 

@@ -2,47 +2,54 @@ import { nanoid } from "nanoid";
 
 import type { UnionField } from "../../types";
 
+import { definitions } from "./settings";
+
 export const fields = {
   checkbox: {
-    checked: false,
-    disabled: false,
-    id: "",
-    label: "Checkbox",
-    name: "",
-    type: "checkbox",
+    id: nanoid(),
+    settings: [
+      { ...definitions.label, value: "Checkbox" },
+      definitions.name,
+      definitions.value,
+      definitions.checked,
+      definitions.disabled,
+    ],
     value: "",
   },
   number: {
-    disabled: false,
-    id: "",
-    placeholder: "Placeholder",
-    type: "number",
-    label: "Number input",
+    id: nanoid(),
+    settings: [
+      { ...definitions.label, value: "Number input" },
+      { ...definitions.placeholder, value: "Placeholder" },
+      definitions.value,
+      definitions.disabled,
+    ],
     value: "",
   },
   select: {
-    disabled: false,
-    id: "",
-    items: [{ id: nanoid(), key: "", value: "" }],
-    label: "Select",
-    placeholder: "Placeholder",
-    type: "select",
+    id: nanoid(),
+    settings: [
+      { ...definitions.label, value: "Select" },
+      { ...definitions.placeholder, value: "Placeholder" },
+      definitions.items,
+      definitions.value,
+      definitions.disabled,
+    ],
     value: "",
   },
   switch: {
-    checked: false,
-    disabled: false,
-    label: "Switch",
-    id: "",
-    type: "switch",
+    id: nanoid(),
+    settings: [{ ...definitions.label, value: "Switch" }, definitions.value, definitions.checked, definitions.disabled],
     value: "",
   },
   text: {
-    disabled: false,
-    id: "",
-    label: "Text input",
-    placeholder: "Placeholder",
-    type: "text",
+    id: nanoid(),
+    settings: [
+      { ...definitions.label, value: "Text input" },
+      { ...definitions.placeholder, value: "Placeholder" },
+      definitions.value,
+      definitions.disabled,
+    ],
     value: "",
   },
 } as const satisfies UnionField;

@@ -1,25 +1,56 @@
 <script setup lang="ts">
 import { nanoid } from "nanoid";
 
-import type { Field, Setting } from "@/entities/field";
+import type { KeyValueInputSetting } from "@/entities/field";
 import { EditField } from "@/features/field";
 import { debounce } from "@/shared/lib";
+import type { KeyValueInputItem } from "@/shared/ui/key-value-input";
 import { KeyValueInput } from "@/shared/ui/key-value-input";
 
 type Emits = {
-  update: [payload: Partial<Field>];
+  update: [payload: Partial<KeyValueInputSetting>];
 };
 
 type Props = {
-  field: Field;
-  setting: Setting;
+  setting: KeyValueInputSetting;
 };
 
 const emit = defineEmits<Emits>();
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
-const onUpdate = (payload: Partial<Field>) => emit("update", payload);
+const onUpdate = (payload: Partial<KeyValueInputSetting>) => emit("update", payload);
+
+const addItem = () =>
+  onUpdate({
+    items: [
+      ...props.setting.items,
+      {
+        id: nanoid(),
+        key: "",
+        value: "",
+      },
+    ],
+  });
+
+const changeItem = (index: number, payload: Partial<KeyValueInputItem>) => {
+  if (!props.setting.items[index]) {
+    return;
+  }
+
+  updateValue({
+    items: [
+      ...props.setting.items.slice(0, index),
+      { ...props.setting.items[index], ...payload },
+      ...props.setting.items.slice(index + 1),
+    ],
+  });
+};
+
+const removeItem = (index: number) =>
+  onUpdate({
+    items: [...props.setting.items.slice(0, index), ...props.setting.items.slice(index + 1)],
+  });
 
 const updateValue = debounce(onUpdate, 250);
 </script>
@@ -28,35 +59,10 @@ const updateValue = debounce(onUpdate, 250);
   <EditField>
     <template #default>
       <KeyValueInput
-        :items="(field as any)[setting.id]"
-        @add="
-          onUpdate({
-            items: [
-              ...(field as any)[setting.id],
-              {
-                id: nanoid(),
-                key: '',
-                value: '',
-              },
-            ],
-          })
-        "
-        @change="
-          (index, payload) =>
-            updateValue({
-              items: [
-                ...(field as any)[setting.id].slice(0, index),
-                { ...(field as any)[setting.id][index], ...payload },
-                ...(field as any)[setting.id].slice(index + 1),
-              ],
-            })
-        "
-        @remove="
-          (index) =>
-            onUpdate({
-              items: [...(field as any)[setting.id].slice(0, index), ...(field as any)[setting.id].slice(index + 1)],
-            })
-        "
+        :items="setting.items"
+        @add="addItem"
+        @change="changeItem"
+        @remove="removeItem"
       />
     </template>
     <template #label>
