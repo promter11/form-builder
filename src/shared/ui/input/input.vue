@@ -15,7 +15,13 @@ const id = useId();
 
 const onBeforeInput = (event: Event) => {
   if (event.target instanceof HTMLInputElement) {
-    emit("input", event.target.value);
+    emit("beforeInput", event);
+  }
+};
+
+const onChange = (event: Event) => {
+  if (event.target instanceof HTMLInputElement) {
+    emit("change", event.target.value);
   }
 };
 
@@ -48,6 +54,7 @@ const onInput = (event: Event) => {
         type="text"
         :value="value"
         @beforeinput="onBeforeInput"
+        @change="onChange"
         @input="onInput"
       />
     </Typography>

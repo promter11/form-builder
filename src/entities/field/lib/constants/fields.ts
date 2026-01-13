@@ -14,7 +14,6 @@ export const fields = {
       settings.checked,
       settings.disabled,
     ],
-    value: "",
   },
   number: {
     id: nanoid(),
@@ -24,7 +23,6 @@ export const fields = {
       settings.value,
       settings.disabled,
     ],
-    value: "",
   },
   select: {
     id: nanoid(),
@@ -35,12 +33,10 @@ export const fields = {
       settings.value,
       settings.disabled,
     ],
-    value: "",
   },
   switch: {
     id: nanoid(),
     settings: [{ ...settings.label, value: "Switch" }, settings.value, settings.checked, settings.disabled],
-    value: "",
   },
   text: {
     id: nanoid(),
@@ -50,6 +46,5 @@ export const fields = {
       settings.value,
       settings.disabled,
     ],
-    value: "",
   },
 } as const satisfies UnionField;

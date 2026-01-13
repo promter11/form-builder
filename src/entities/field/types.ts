@@ -3,7 +3,6 @@ import type { KeyValueInputItem } from "@/shared/ui/key-value-input";
 export type Field = {
   id: string;
   settings: UnionSetting[];
-  value: string;
 };
 
 export type FieldPreset = {

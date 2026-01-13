@@ -23,13 +23,13 @@ const onRemove = (index: number) => emit("remove", index);
       <Input
         placeholder="Key"
         :value="item.key"
-        @input="(key) => onChange(index, { key })"
+        @change="(key) => onChange(index, { key })"
       />
       &#8212;
       <Input
         placeholder="Value"
         :value="item.value"
-        @input="(value) => onChange(index, { value })"
+        @change="(value) => onChange(index, { value })"
       />
       <Button
         v-if="items.length > 1"

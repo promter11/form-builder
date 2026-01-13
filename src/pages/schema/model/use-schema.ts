@@ -1,5 +1,6 @@
 import { computed } from "vue";
 
+import type { UnionSetting } from "@/entities/field";
 import { useFormStore } from "@/features/form";
 import { useClipboard } from "@/shared/composables";
 import { useToast } from "@/shared/ui/toast";
@@ -11,14 +12,8 @@ export const useSchema = () => {
 
   const schema = computed(() =>
     JSON.stringify(
-      formStore.fields,
-      (key, value) => {
-        if (key === "id") {
-          return undefined;
-        }
-
-        return value;
-      },
+      formStore.fields.map((field) => Object.fromEntries(field.settings.map(normalize))),
+      null,
       2
     )
   );
@@ -35,6 +30,16 @@ export const useSchema = () => {
         title: "Copy failed",
         variant: "danger",
       });
+    }
+  };
+
+  const normalize = (setting: UnionSetting) => {
+    switch (setting.control) {
+      case "keyValueInput":
+        return [setting.id, setting.items.reduce((acc, { key, value }) => ({ ...acc, [key]: value }), {})];
+
+      default:
+        return [setting.id, setting.value];
     }
   };
 

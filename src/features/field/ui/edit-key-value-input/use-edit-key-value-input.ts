@@ -1,7 +1,6 @@
 import { nanoid } from "nanoid";
 
 import type { KeyValueInputSetting } from "@/entities/field";
-import { debounce } from "@/shared/lib";
 import type { KeyValueInputItem } from "@/shared/ui/key-value-input";
 
 import type { EditKeyValueInputProps } from "./types";
@@ -10,8 +9,6 @@ export const useEditKeyValueInput = (
   props: EditKeyValueInputProps,
   onUpdate: (payload: Partial<KeyValueInputSetting>) => void
 ) => {
-  const update = debounce(onUpdate, 250);
-
   const addItem = () =>
     onUpdate({
       items: [
@@ -29,7 +26,7 @@ export const useEditKeyValueInput = (
       return;
     }
 
-    update({
+    onUpdate({
       items: [
         ...props.setting.items.slice(0, index),
         { ...props.setting.items[index], ...payload },

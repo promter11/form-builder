@@ -1,5 +1,6 @@
 export type InputEmits = {
   beforeInput: [event: Event];
+  change: [value: string];
   input: [value: string];
 };
 export type InputProps = {
