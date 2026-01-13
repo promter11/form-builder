@@ -5,7 +5,6 @@ import { Typography } from "../typography";
 import type { CheckboxEmits, CheckboxProps } from "./types";
 
 const emit = defineEmits<CheckboxEmits>();
-
 const props = withDefaults(defineProps<CheckboxProps>(), {
   isChecked: false,
   isDisabled: false,

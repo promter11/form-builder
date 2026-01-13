@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useRipple } from "../../composables";
 import { Typography } from "../typography";
 
 import type { ButtonProps } from "./types";
+import { useButton } from "./use-button";
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   color: "primary",
@@ -10,28 +10,20 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   variant: "solid",
 });
 
-const ripple = useRipple();
-
-const click = (event: MouseEvent) => {
-  if (props.variant === "plain") {
-    return;
-  }
-
-  ripple.trigger(event);
-};
+const model = useButton(props);
 </script>
 
 <template>
   <button
-    :ref="ripple.hostRef"
+    :ref="model.ripple.hostRef"
     :class="[$style.root, $style[`${variant}-${color}`]]"
     :disabled="isDisabled"
     type="button"
-    @click="click"
+    @click="model.click"
   >
     <span
       v-if="variant !== 'plain'"
-      :ref="ripple.rippleRef"
+      :ref="model.ripple.rippleRef"
       :class="$style.ripple"
     />
     <Typography

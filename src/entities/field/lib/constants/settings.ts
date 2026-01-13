@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 
 import type { UnionSetting } from "../../types";
 
-export const definitions = {
+export const settings = {
   checked: {
     control: "checkbox",
     id: "checked",

@@ -1,39 +1,22 @@
 <script setup lang="ts">
-import { toRef } from "vue";
-
-import type { Field } from "@/entities/field";
-import { useDragReorder } from "@/features/field";
-import { useFormStore } from "@/features/form";
 import { Button } from "@/shared/ui/button";
 import { Card } from "@/shared/ui/card";
 import { Divider } from "@/shared/ui/divider";
 import { Icon } from "@/shared/ui/icon";
 import { Typography } from "@/shared/ui/typography";
 
-const dragReorder = useDragReorder(toRef(() => formStore.fields));
-const formStore = useFormStore();
+import { useManageField } from "./use-manage-field";
 
-const getLabel = (field: Field) => {
-  const setting = field.settings.find((setting) => setting.id === "label");
-  return setting?.value ?? "Field";
-};
-
-const handleRemove = (field: Field) => {
-  if (formStore.activeFieldId === field.id) {
-    formStore.changeActiveFieldId("");
-  }
-
-  formStore.removeField(field.id);
-};
+const model = useManageField();
 </script>
 
 <template>
   <Card
-    v-for="(field, index) of formStore.fields"
+    v-for="(field, index) of model.formStore.fields"
     :key="field.id"
-    :class="[$style.root, dragReorder.from.value === index && $style.dragging]"
-    @dragover.prevent="dragReorder.over(index)"
-    @drop="dragReorder.drop(index)"
+    :class="[$style.root, model.dragReorder.from.value === index && $style.dragging]"
+    @dragover.prevent="model.dragReorder.over(index)"
+    @drop="model.dragReorder.drop(index)"
   >
     <div :class="$style.container">
       <Button
@@ -41,19 +24,19 @@ const handleRemove = (field: Field) => {
         color="neutral"
         draggable="true"
         variant="plain"
-        @dragend="dragReorder.reset"
-        @dragstart="dragReorder.start(index)"
+        @dragend="model.dragReorder.reset"
+        @dragstart="model.dragReorder.start(index)"
       >
         <Icon
           name="dots-vertical"
           size="xs"
         />
       </Button>
-      <Typography :class="$style.label">{{ getLabel(field) }}</Typography>
+      <Typography :class="$style.label">{{ model.getLabel(field) }}</Typography>
     </div>
     <div :class="$style.actions">
       <div
-        v-if="formStore.activeFieldId === field.id"
+        v-if="model.formStore.activeFieldId === field.id"
         :class="$style.mark"
       >
         <Icon
@@ -66,7 +49,7 @@ const handleRemove = (field: Field) => {
       <Button
         color="neutral"
         variant="plain"
-        @click="formStore.changeActiveFieldId(formStore.activeFieldId === field.id ? '' : field.id)"
+        @click="model.toggleField(field)"
       >
         <Icon
           name="edit"
@@ -76,7 +59,7 @@ const handleRemove = (field: Field) => {
       <Button
         color="neutral"
         variant="plain"
-        @click="handleRemove(field)"
+        @click="model.removeField(field)"
       >
         <Icon
           name="trash"

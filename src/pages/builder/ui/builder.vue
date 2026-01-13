@@ -1,43 +1,23 @@
 <script setup lang="ts">
-import type { UnionSetting } from "@/entities/field";
-import { useFormStore } from "@/features/form";
 import { FieldList } from "@/widgets/field-list";
 import { FieldPresets } from "@/widgets/field-presets";
 import { FieldSettings } from "@/widgets/field-settings";
 
-const formStore = useFormStore();
+import { useBuilder } from "../model";
 
-const updateSetting = <T extends UnionSetting>(index: number, payload: Partial<T>) => {
-  const field = formStore.activeField;
-  if (!field) {
-    return;
-  }
-
-  const current = field.settings[index] as T;
-
-  formStore.editField(formStore.activeFieldId, {
-    settings: [
-      ...field.settings.slice(0, index),
-      {
-        ...current,
-        ...payload,
-      },
-      ...field.settings.slice(index + 1),
-    ],
-  });
-};
+const model = useBuilder();
 </script>
 
 <template>
   <div :class="$style.root">
     <div :class="$style.container">
       <FieldPresets />
-      <FieldList v-if="formStore.fields.length > 0" />
+      <FieldList v-if="model.formStore.fields.length > 0" />
     </div>
     <FieldSettings
-      v-if="formStore.activeField"
-      :settings="formStore.activeField.settings"
-      @update="(index, payload) => updateSetting(index, payload)"
+      v-if="model.formStore.activeField"
+      :settings="model.formStore.activeField.settings"
+      @update="(index, payload) => model.updateSetting(index, payload)"
     />
   </div>
 </template>

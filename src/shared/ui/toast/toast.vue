@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import { onBeforeUnmount, watch } from "vue";
-
 import { Button } from "../button";
 import { Icon } from "../icon";
 import { Typography } from "../typography";
 
-import type { ToastEmits, ToastProps, ToastVariant } from "./types";
+import type { ToastEmits, ToastProps } from "./types";
+import { useToast } from "./use-toast";
 
 const emit = defineEmits<ToastEmits>();
-
 const props = withDefaults(defineProps<ToastProps>(), {
   duration: 2_000,
   title: "Toast title",
@@ -16,27 +14,9 @@ const props = withDefaults(defineProps<ToastProps>(), {
   value: false,
 });
 
-const iconsByVariant = {
-  danger: "danger",
-  success: "circle-check",
-} as const satisfies Record<ToastVariant, string>;
-
-let timeout: ReturnType<typeof setTimeout>;
-
 const onClose = () => emit("close");
 
-watch(
-  () => props.value,
-  (value) => {
-    if (value) {
-      timeout = setTimeout(onClose, props.duration);
-    } else {
-      clearTimeout(timeout);
-    }
-  }
-);
-
-onBeforeUnmount(() => clearTimeout(timeout));
+const model = useToast(props, onClose);
 </script>
 
 <template>
@@ -50,7 +30,7 @@ onBeforeUnmount(() => clearTimeout(timeout));
       <div :class="$style.container">
         <Icon
           :class="$style.icon"
-          :name="iconsByVariant[variant]"
+          :name="model.iconByVariant.value"
           size="s"
         />
         <Typography variant="subtitle">{{ title }}</Typography>

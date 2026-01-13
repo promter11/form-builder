@@ -1,35 +1,21 @@
 <script setup lang="ts">
-import { computed, ref, useId } from "vue";
+import { useId } from "vue";
 
 import { Icon } from "../icon";
 import { Typography } from "../typography";
 
 import type { SelectEmits, SelectProps } from "./types";
+import { useSelect } from "./use-select";
 
 const emit = defineEmits<SelectEmits>();
-
 const props = withDefaults(defineProps<SelectProps>(), {
   isDisabled: false,
 });
 
 const id = useId();
-
-const isExpanded = ref(false);
-
-const currentItem = computed(() => props.items.find((item) => item.value === props.value));
+const model = useSelect(props);
 
 const onChange = (value: string) => emit("change", value);
-
-const changeExpanded = (value: boolean) => {
-  isExpanded.value = value;
-};
-
-const handleChange = (value: string) => {
-  changeExpanded(false);
-  onChange(value);
-};
-
-const handleClickOutside = () => changeExpanded(false);
 </script>
 
 <template>
@@ -44,22 +30,22 @@ const handleClickOutside = () => changeExpanded(false);
     </label>
     <button
       :id="id"
-      v-click-outside="handleClickOutside"
+      v-click-outside="model.handleClickOutside"
       :class="$style.button"
       :disabled="isDisabled"
       type="button"
-      @click="changeExpanded(!isExpanded)"
+      @click="model.changeExpanded(!model.isExpanded.value)"
     >
-      <Typography :class="$style.text">{{ currentItem?.text ?? placeholder }}</Typography>
+      <Typography :class="$style.text">{{ model.currentItem.value?.text ?? placeholder }}</Typography>
       <Icon
-        :class="[$style.chevron, isExpanded && $style.reversed]"
+        :class="[$style.chevron, model.isExpanded.value && $style.reversed]"
         name="chevron-down"
         size="xs"
       />
     </button>
     <Transition name="slide-up">
       <div
-        v-if="isExpanded"
+        v-if="model.isExpanded.value"
         :class="$style.list"
       >
         <div :class="$style.inner">
@@ -68,11 +54,11 @@ const handleClickOutside = () => changeExpanded(false);
             :key="item.value"
             :class="$style.item"
             type="button"
-            @click="handleChange(item.value)"
+            @click="onChange(model.handleChange(item.value))"
           >
             <Typography :class="$style.text">{{ item.text }}</Typography>
             <Icon
-              v-if="currentItem?.value === item.value"
+              v-if="model.currentItem.value?.value === item.value"
               :class="$style.mark"
               name="circle-check"
               size="s"

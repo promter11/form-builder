@@ -2,53 +2,53 @@ import { nanoid } from "nanoid";
 
 import type { UnionField } from "../../types";
 
-import { definitions } from "./settings";
+import { settings } from "./settings";
 
 export const fields = {
   checkbox: {
     id: nanoid(),
     settings: [
-      { ...definitions.label, value: "Checkbox" },
-      definitions.name,
-      definitions.value,
-      definitions.checked,
-      definitions.disabled,
+      { ...settings.label, value: "Checkbox" },
+      settings.name,
+      settings.value,
+      settings.checked,
+      settings.disabled,
     ],
     value: "",
   },
   number: {
     id: nanoid(),
     settings: [
-      { ...definitions.label, value: "Number input" },
-      { ...definitions.placeholder, value: "Placeholder" },
-      definitions.value,
-      definitions.disabled,
+      { ...settings.label, value: "Number input" },
+      { ...settings.placeholder, value: "Placeholder" },
+      settings.value,
+      settings.disabled,
     ],
     value: "",
   },
   select: {
     id: nanoid(),
     settings: [
-      { ...definitions.label, value: "Select" },
-      { ...definitions.placeholder, value: "Placeholder" },
-      definitions.items,
-      definitions.value,
-      definitions.disabled,
+      { ...settings.label, value: "Select" },
+      { ...settings.placeholder, value: "Placeholder" },
+      settings.items,
+      settings.value,
+      settings.disabled,
     ],
     value: "",
   },
   switch: {
     id: nanoid(),
-    settings: [{ ...definitions.label, value: "Switch" }, definitions.value, definitions.checked, definitions.disabled],
+    settings: [{ ...settings.label, value: "Switch" }, settings.value, settings.checked, settings.disabled],
     value: "",
   },
   text: {
     id: nanoid(),
     settings: [
-      { ...definitions.label, value: "Text input" },
-      { ...definitions.placeholder, value: "Placeholder" },
-      definitions.value,
-      definitions.disabled,
+      { ...settings.label, value: "Text input" },
+      { ...settings.placeholder, value: "Placeholder" },
+      settings.value,
+      settings.disabled,
     ],
     value: "",
   },

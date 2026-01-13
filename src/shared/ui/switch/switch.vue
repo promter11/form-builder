@@ -4,7 +4,6 @@ import { Typography } from "../typography";
 import type { SwitchEmits, SwitchProps } from "./types";
 
 const emit = defineEmits<SwitchEmits>();
-
 const props = withDefaults(defineProps<SwitchProps>(), {
   isChecked: false,
   isDisabled: false,

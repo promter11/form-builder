@@ -3,17 +3,10 @@ import type { CheckboxSetting } from "@/entities/field";
 import { EditField } from "@/features/field";
 import { Checkbox } from "@/shared/ui/checkbox";
 
-type Emits = {
-  update: [payload: Partial<CheckboxSetting>];
-};
+import type { EditCheckboxEmits, EditCheckboxProps } from "./types";
 
-type Props = {
-  setting: CheckboxSetting;
-};
-
-const emit = defineEmits<Emits>();
-
-defineProps<Props>();
+const emit = defineEmits<EditCheckboxEmits>();
+defineProps<EditCheckboxProps>();
 
 const onUpdate = (payload: Partial<CheckboxSetting>) => emit("update", payload);
 </script>

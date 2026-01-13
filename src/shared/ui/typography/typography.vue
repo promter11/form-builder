@@ -1,24 +1,17 @@
 <script setup lang="ts">
-import { computed } from "vue";
-
-import type { TypographyProps, TypographyTag, TypographyVariant } from "./types";
+import type { TypographyProps } from "./types";
+import { useTypography } from "./use-typography";
 
 const props = withDefaults(defineProps<TypographyProps>(), {
   variant: "body",
 });
 
-const tagsByVariant = {
-  body: "p",
-  subtitle: "h2",
-  title: "h1",
-} as const satisfies Record<TypographyVariant, TypographyTag>;
-
-const tag = computed(() => tagsByVariant[props.variant]);
+const model = useTypography(props);
 </script>
 
 <template>
   <component
-    :is="tag"
+    :is="model.tag.value"
     :class="[$style[`variant-${variant}`]]"
   >
     <slot />

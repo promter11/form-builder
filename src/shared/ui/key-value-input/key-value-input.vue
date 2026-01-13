@@ -6,7 +6,6 @@ import { Input } from "@/shared/ui/input";
 import type { KeyValueInputEmits, KeyValueInputItem, KeyValueInputProps } from "./types";
 
 const emit = defineEmits<KeyValueInputEmits>();
-
 defineProps<KeyValueInputProps>();
 
 const onAdd = () => emit("add");
@@ -26,7 +25,7 @@ const onRemove = (index: number) => emit("remove", index);
         :value="item.key"
         @input="(key) => onChange(index, { key })"
       />
-      —
+      &#8212;
       <Input
         placeholder="Value"
         :value="item.value"

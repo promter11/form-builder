@@ -6,7 +6,6 @@ import { Typography } from "../typography";
 import type { InputEmits, InputProps } from "./types";
 
 const emit = defineEmits<InputEmits>();
-
 withDefaults(defineProps<InputProps>(), {
   isDisabled: false,
   inputMode: "text",
@@ -19,6 +18,7 @@ const onBeforeInput = (event: Event) => {
     emit("input", event.target.value);
   }
 };
+
 const onInput = (event: Event) => {
   if (event.target instanceof HTMLInputElement) {
     emit("input", event.target.value);

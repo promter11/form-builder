@@ -1,24 +1,16 @@
 <script setup lang="ts">
-import { computed } from "vue";
-
 import type { UnionSetting } from "@/entities/field";
 import { EditCheckbox, EditKeyValueInput, EditTextInput } from "@/features/field";
 import { Card } from "@/shared/ui/card";
 import { Typography } from "@/shared/ui/typography";
 
-type Emits = {
-  update: [index: number, payload: Partial<UnionSetting>];
-};
+import { useFieldSettings } from "../model";
+import type { FieldSettingsEmits, FieldSettingsProps } from "../types";
 
-type Props = {
-  settings: UnionSetting[];
-};
+const emit = defineEmits<FieldSettingsEmits>();
+const props = defineProps<FieldSettingsProps>();
 
-const emit = defineEmits<Emits>();
-
-const props = defineProps<Props>();
-
-const label = computed(() => props.settings.find((setting) => setting.id === "label"));
+const model = useFieldSettings(props);
 
 const onUpdate = (index: number, payload: Partial<UnionSetting>) => emit("update", index, payload);
 </script>
@@ -27,7 +19,7 @@ const onUpdate = (index: number, payload: Partial<UnionSetting>) => emit("update
   <Card :class="$style.root">
     <Typography variant="subtitle">
       Field settings
-      <span v-if="label">— {{ label.value }}</span>
+      <span v-if="model.label.value">&#8212; {{ model.label.value.value }}</span>
     </Typography>
     <template
       v-for="(setting, index) of settings"

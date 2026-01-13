@@ -1,46 +1,12 @@
 <script setup lang="ts">
-import { computed } from "vue";
-
-import { useFormStore } from "@/features/form";
-import { useClipboard } from "@/shared/composables";
 import { downloadFile } from "@/shared/lib";
 import { Button } from "@/shared/ui/button";
 import { Card } from "@/shared/ui/card";
 import { Icon } from "@/shared/ui/icon";
-import { useToast } from "@/shared/ui/toast";
 
-const clipboard = useClipboard();
-const formStore = useFormStore();
-const toast = useToast();
+import { useSchema } from "../model";
 
-const schema = computed(() =>
-  JSON.stringify(
-    formStore.fields,
-    (key, value) => {
-      if (key === "id") {
-        return undefined;
-      }
-
-      return value;
-    },
-    2
-  )
-);
-
-const copy = async (text: string) => {
-  try {
-    await clipboard.copy(text);
-    toast?.actions?.create({
-      title: "Copied successfully",
-      variant: "success",
-    });
-  } catch {
-    toast?.actions?.create({
-      title: "Copy failed",
-      variant: "danger",
-    });
-  }
-};
+const model = useSchema();
 </script>
 
 <template>
@@ -49,7 +15,7 @@ const copy = async (text: string) => {
       <Button
         :class="$style.button"
         color="neutral"
-        @click="copy(schema)"
+        @click="model.copy(model.schema.value)"
       >
         <Icon
           name="copy"
@@ -59,7 +25,7 @@ const copy = async (text: string) => {
       </Button>
       <Button
         :class="$style.button"
-        @click="downloadFile('schema', schema)"
+        @click="downloadFile('schema', model.schema.value)"
       >
         <Icon
           name="download"
@@ -69,7 +35,7 @@ const copy = async (text: string) => {
       </Button>
     </div>
     <Card :class="$style.card">
-      <pre>{{ schema }}</pre>
+      <pre>{{ model.schema.value }}</pre>
     </Card>
   </div>
 </template>

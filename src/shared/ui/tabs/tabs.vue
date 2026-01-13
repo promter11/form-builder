@@ -1,78 +1,36 @@
 <script setup lang="ts">
-import type { ComponentPublicInstance } from "vue";
-import { computed, onMounted, ref, shallowRef } from "vue";
-
 import { Typography } from "../typography";
 
 import type { TabsEmits, TabsProps } from "./types";
+import { useTabs } from "./use-tabs";
 
 const emit = defineEmits<TabsEmits>();
-
 const props = defineProps<TabsProps>();
 
-const activeTabRect = ref<DOMRect>();
-const tabRefs = shallowRef(new Map<string, HTMLElement>());
-const rootRef = ref<HTMLDivElement>();
-
-const styles = computed(() => {
-  if (!activeTabRect.value || !rootRef.value) {
-    return undefined;
-  }
-
-  const rootRect = rootRef.value.getBoundingClientRect();
-
-  return {
-    left: `${activeTabRect.value.left - rootRect.left}px`,
-    top: `${activeTabRect.value.bottom - rootRect.top}px`,
-    width: `${activeTabRect.value.width}px`,
-  };
-});
+const model = useTabs(props);
 
 const onChange = (value: string) => emit("change", value);
-
-const changeItem = (value: string) => {
-  setActiveTabRect(value);
-  onChange(value);
-};
-
-const setActiveTabRect = (value: string) => {
-  const tabRef = tabRefs.value.get(value);
-  if (!tabRef) {
-    return;
-  }
-  activeTabRect.value = tabRef.getBoundingClientRect();
-};
-
-const setTabRef = (element: Element | ComponentPublicInstance | null, value: string) => {
-  if (element instanceof HTMLElement) {
-    tabRefs.value.set(value, element);
-  } else {
-    tabRefs.value.delete(value);
-  }
-};
-
-onMounted(() => setActiveTabRect(props.value));
 </script>
 
 <template>
   <div
-    ref="rootRef"
+    :ref="model.rootRef"
     :class="$style.root"
   >
     <button
       v-for="item of items"
       :key="item.id"
-      :ref="(element) => setTabRef(element, item.value)"
+      :ref="(element) => model.setTabRef(element, item.value)"
       :class="$style.tab"
       :disabled="item.isDisabled"
       type="button"
-      @click="changeItem(item.value)"
+      @click="onChange(model.changeItem(item.value))"
     >
       <Typography>{{ item.label }}</Typography>
     </button>
     <span
       :class="$style.underline"
-      :style="styles"
+      :style="model.styles.value"
     />
   </div>
 </template>

@@ -1,9 +1,7 @@
 <script setup lang="ts">
-type Props = {
-  direction?: "horizontal" | "vertical";
-};
+import type { DividerProps } from "./types";
 
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<DividerProps>(), {
   direction: "horizontal",
 });
 </script>
