@@ -7,7 +7,7 @@ withDefaults(defineProps<SkeletonProps>(), {
 </script>
 
 <template>
-  <div :class="[$style.root, isLoading && $style.loading]">
+  <div :class="[$style.root, isLoading && $style.loading, height && $style.withHeight]">
     <slot />
   </div>
 </template>
@@ -35,6 +35,10 @@ withDefaults(defineProps<SkeletonProps>(), {
     animation: calc(var(--transition-time) * 6) shine linear infinite;
     background: var(--color-skeleton);
     background-size: 200% 100%;
+  }
+
+  &.withHeight {
+    height: v-bind(height + "px");
   }
 }
 

@@ -51,7 +51,7 @@ const setTabRef = (element: Element | ComponentPublicInstance | null, value: str
   }
 };
 
-onMounted(() => changeItem(props.value));
+onMounted(() => setActiveTabRect(props.value));
 </script>
 
 <template>
