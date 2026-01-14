@@ -11,6 +11,7 @@
 - **Качество кода:** ESLint, Prettier, Husky, lint-staged
 - **UI и тестирование компонентов:** Storybook
 - **Утилиты:** nanoid
+- **Методология:** Feature Sliced Design
 
 ## Запуск проекта
 
