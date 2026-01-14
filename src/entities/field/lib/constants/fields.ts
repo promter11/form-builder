@@ -6,6 +6,7 @@ import { settings } from "./settings";
 
 export const fields = {
   checkbox: {
+    control: "checkbox",
     id: nanoid(),
     settings: [
       { ...settings.label, value: "Checkbox" },
@@ -16,6 +17,7 @@ export const fields = {
     ],
   },
   number: {
+    control: "number",
     id: nanoid(),
     settings: [
       { ...settings.label, value: "Number input" },
@@ -25,6 +27,7 @@ export const fields = {
     ],
   },
   select: {
+    control: "select",
     id: nanoid(),
     settings: [
       { ...settings.label, value: "Select" },
@@ -35,10 +38,12 @@ export const fields = {
     ],
   },
   switch: {
+    control: "switch",
     id: nanoid(),
     settings: [{ ...settings.label, value: "Switch" }, settings.value, settings.checked, settings.disabled],
   },
   text: {
+    control: "text",
     id: nanoid(),
     settings: [
       { ...settings.label, value: "Text input" },

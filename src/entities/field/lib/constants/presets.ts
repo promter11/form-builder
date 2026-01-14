@@ -4,28 +4,28 @@ import type { FieldPreset } from "../../types";
 
 export const presets = [
   {
+    control: "text",
     id: nanoid(),
     text: "Text input",
-    type: "text",
   },
   {
+    control: "number",
     id: nanoid(),
     text: "Number input",
-    type: "number",
   },
   {
+    control: "checkbox",
     id: nanoid(),
     text: "Checkbox",
-    type: "checkbox",
   },
   {
+    control: "select",
     id: nanoid(),
     text: "Select",
-    type: "select",
   },
   {
+    control: "switch",
     id: nanoid(),
     text: "Switch",
-    type: "switch",
   },
 ] as const satisfies FieldPreset[];

@@ -1,19 +1,20 @@
 import type { KeyValueInputItem } from "@/shared/ui/key-value-input";
 
 export type Field = {
+  control: FieldControl;
   id: string;
   settings: UnionSetting[];
 };
 
+export type FieldControl = "checkbox" | "number" | "select" | "switch" | "text";
+
 export type FieldPreset = {
+  control: FieldControl;
   id: string;
   text: string;
-  type: FieldType;
 };
 
-export type FieldType = "checkbox" | "number" | "select" | "switch" | "text";
-
-export type UnionField = Record<FieldType, Field>;
+export type UnionField = Record<FieldControl, Field>;
 
 export type BaseSetting = {
   id: string;

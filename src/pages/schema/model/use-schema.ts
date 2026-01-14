@@ -1,6 +1,5 @@
 import { computed } from "vue";
 
-import type { UnionSetting } from "@/entities/field";
 import { useFormStore } from "@/features/form";
 import { useClipboard } from "@/shared/composables";
 import { useToast } from "@/shared/ui/toast";
@@ -10,13 +9,22 @@ export const useSchema = () => {
   const formStore = useFormStore();
   const toast = useToast();
 
-  const schema = computed(() =>
-    JSON.stringify(
-      formStore.fields.map((field) => Object.fromEntries(field.settings.map(normalize))),
-      null,
-      2
+  const fields = computed(() =>
+    formStore.fields.map((field) =>
+      Object.fromEntries(
+        field.settings.map((setting) => {
+          switch (setting.control) {
+            case "keyValueInput":
+              return [setting.id, setting.items.reduce((acc, { key, value }) => ({ ...acc, [key]: value }), {})];
+
+            default:
+              return [setting.id, setting.value];
+          }
+        })
+      )
     )
   );
+  const schema = computed(() => fields.value.map((item) => JSON.stringify(item, null, 2)).join(",\n"));
 
   const copy = async (text: string) => {
     try {
@@ -30,16 +38,6 @@ export const useSchema = () => {
         title: "Copy failed",
         variant: "danger",
       });
-    }
-  };
-
-  const normalize = (setting: UnionSetting) => {
-    switch (setting.control) {
-      case "keyValueInput":
-        return [setting.id, setting.items.reduce((acc, { key, value }) => ({ ...acc, [key]: value }), {})];
-
-      default:
-        return [setting.id, setting.value];
     }
   };
 

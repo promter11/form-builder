@@ -13,7 +13,7 @@ export const useAddField = (props: AddFieldProps) => {
 
   const addField = () => {
     formStore.addField({
-      ...fields[props.preset.type],
+      ...fields[props.preset.control],
       id: nanoid(),
     });
     toast?.actions?.create({

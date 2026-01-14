@@ -35,7 +35,7 @@ const model = useSchema();
       </Button>
     </div>
     <Card :class="$style.card">
-      <pre>{{ model.schema.value }}</pre>
+      <pre>{{ model.schema }}</pre>
     </Card>
   </div>
 </template>

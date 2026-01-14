@@ -15,6 +15,7 @@ const onInput = (value: string) => emit("input", value);
 <template>
   <Input
     inputmode="decimal"
+    :is-disabled="isDisabled"
     :label="label"
     :placeholder="placeholder"
     :value="model.formattedValue.value"
