@@ -46,6 +46,7 @@ const onRemove = (index: number) => emit("remove", index);
     </div>
     <Button
       :class="$style.addButton"
+      variant="bordered"
       @click="onAdd"
     >
       <Icon
